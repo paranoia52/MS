@@ -4,6 +4,14 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    redirect: '/index'
+  },
+  {
+    path: '/index',
+    components: () => import('@/views/index/Index.vue')
+  }
 ]
 
 const router = new VueRouter({
