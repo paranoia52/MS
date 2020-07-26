@@ -1,5 +1,5 @@
 <template>
-  <div class="index">index</div>
+  <div class="wallpaper">wallpaper</div>
 </template>
 
 <script>
