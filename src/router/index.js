@@ -10,20 +10,23 @@ const routes = [
   },
   {
     path: '/index',
-    component: () => import('@/views/index/Index.vue')
+    component: () => import('@/views/index/Index.vue'),
+    children: [
+      {
+        path: '/music',
+        component: () => import('@/views/music/Music.vue')
+      },
+      {
+        path: '/wallpaper',
+        component: () => import('@/views/wallpaper/WallPaper.vue')
+      },
+      {
+        path: '/book',
+        component: () => import('@/views/book/Book.vue')
+      },
+    ]
   },
-  {
-    path: '/music',
-    component: () => import('@/views/music/Music.vue')
-  },
-  {
-    path: '/wallpaper',
-    component: () => import('@/views/wallpaper/WallPaper.vue')
-  },
-  {
-    path: '/book',
-    component: () => import('@/views/book/Book.vue')
-  },
+
 ]
 
 const router = new VueRouter({
