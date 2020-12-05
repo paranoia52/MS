@@ -31,6 +31,18 @@ export const isWeiXin = () => {
         return false;
     }
 }
+// 判断是否是安卓
+export const isAndroid = () => {
+    // 获取手机系统信息
+    const u = navigator.userAgent,
+    return u.indexOf("Android") > -1 || u.indexOf("Linux") > -1;
+}
+// 判断是否是IOS
+export const isIOS = () => {
+    // 获取手机系统信息
+    const u = navigator.userAgent,
+    return !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+}
 // 字符串转BASE64
 export const fltStringToBase = (val) => {
     const Base64 = require('js-base64').Base64
