@@ -172,7 +172,7 @@ import state0 from "./img/state_0.png";
 import state1 from "./img/state_1.png";
 import talkicon1 from "./img/talkicon1.png";
 import talkicon2 from "./img/talkicon2.png";
-import $ from "jquery";
+
 export default {
   name: "Player",
   data() {
@@ -315,9 +315,6 @@ export default {
         this.wordIndex = 0;
         this.wordsTop = 0;
         this.currentProgress = "0%";
-        if (!this.playState) {
-          $(".control_icon").click();
-        }
       }
     },
     ButtonActive(id) {
@@ -341,9 +338,6 @@ export default {
             this.wordIndex = 0;
             this.wordsTop = 0;
             this.currentProgress = "0%";
-            if (!this.playState) {
-              $(".control_icon").click();
-            }
           } else {
             //自定义库没有歌曲 提示需要搜索才可以添加
             this.MusicAlert("没有歌曲,需要自己添加");
@@ -360,9 +354,6 @@ export default {
             this.wordIndex = 0;
             this.wordsTop = 0;
             this.currentProgress = "0%";
-            if (!this.playState) {
-              $(".control_icon").click();
-            }
           });
         }
       }
@@ -447,44 +438,10 @@ export default {
     },
     Player() {
       let self = this;
-      let player = $("#music")[0];
       let playerTimer = setInterval(timer, 1000);
-      //定时器函数
-      $("body").on("click", () => {
-        player.play();
-        $("body").unbind("click");
-      });
       function timer() {
         self.currentProgress = `${(player.currentTime / player.duration) *
           100}%`;
-        //接着这里写歌词滚动
-        if (player.currentTime >= self.wordsTime[self.o + 1]) {
-          self.top += Number.parseInt(
-            $(".music_word")
-              .eq(self.o)
-              .height() +
-              Number.parseInt(
-                $(".music_word")
-                  .eq(self.o)
-                  .css("marginTop")
-              )
-          );
-          if (self.top >= $(".music_words").height() / 2 - 11) {
-            //开始滚动的高度
-            self.wordsTop += -Number.parseInt(
-              $(".music_word")
-                .eq(self.o)
-                .height() +
-                Number.parseInt(
-                  $(".music_word")
-                    .eq(self.o)
-                    .css("marginTop")
-                )
-            );
-          }
-          self.wordIndex = self.o + 1;
-          self.o++;
-        }
         if (player.currentTime >= player.duration) {
           //切歌
           if (self.musicList.length != 1) {
@@ -505,92 +462,8 @@ export default {
           self.currentProgress = "0%";
         }
       }
-      //进度条控制
-      $(".progress").on("mousedown", ev => {
-        console.log();
-        let e = ev || event;
-        let pro =
-          (e.clientX - $(".progress").offset().left) / $(".progress").width();
-        clearInterval(playerTimer);
-        this.currentProgress = `${pro * 100}%`;
-        $(document).on("mousemove", ev => {
-          let e = ev || event;
-          pro =
-            (e.clientX - $(".progress").offset().left) / $(".progress").width();
-          this.currentProgress = `${pro * 100}%`;
-        });
-        $(document).on("mouseup", () => {
-          player.currentTime = player.duration * pro;
-          let c_arr = [...this.wordsTime];
-          c_arr.push(player.currentTime);
-          c_arr.sort((l, r) => {
-            return l - r;
-          });
-          let now_o = c_arr.indexOf(player.currentTime) - 1;
-          let diff_h = 0;
-          if (this.o < now_o) {
-            for (let i = this.o; i < now_o; i++) {
-              diff_h += -Number.parseInt(
-                $(".music_word")
-                  .eq(i)
-                  .height() +
-                  Number.parseInt(
-                    $(".music_word")
-                      .eq(i)
-                      .css("marginTop")
-                  )
-              );
-            }
-          } else {
-            for (let i = now_o; i < this.o; i++) {
-              diff_h += Number.parseInt(
-                $(".music_word")
-                  .eq(i)
-                  .height() +
-                  Number.parseInt(
-                    $(".music_word")
-                      .eq(i)
-                      .css("marginTop")
-                  )
-              );
-            }
-          }
-          this.wordsTop += diff_h;
-          self.wordIndex = this.o = now_o;
-          clearInterval(playerTimer);
-          playerTimer = setInterval(timer, 1000);
-          this.playState = true;
-          this.playIcon = this.pause;
-          if (player.currentTime >= player.duration) {
-            this.top = 0;
-            this.o = 0;
-            this.wordIndex = 0;
-            this.wordsTop = 0;
-            this.currentProgress = "0%";
-          }
-          player.play();
-          $(document).unbind("mousemove");
-          $(document).unbind("mouseup");
-        });
-      });
-      //播放暂停按钮控制
-      $(".control_icon").on("click", () => {
-        if (this.playState) {
-          player.pause();
-          this.playState = false;
-          this.playIcon = this.play;
-          clearInterval(playerTimer);
-        } else {
-          player.play();
-          this.playState = true;
-          this.playIcon = this.pause;
-          clearInterval(playerTimer);
-          playerTimer = setInterval(timer, 1000);
-        }
-      });
     },
     Contorl() {
-      let player = $("#music")[0];
       player.currentTime = 100;
     }
   }

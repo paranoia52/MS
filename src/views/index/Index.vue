@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { HeadHtml } from "../../assets/js/head";
 export default {
   data() {
     return {
@@ -30,9 +29,6 @@ export default {
     };
   },
   created() {
-    this.$nextTick(() => {
-      HeadHtml();
-    });
   },
   methods: {
     changeNav(i) {
