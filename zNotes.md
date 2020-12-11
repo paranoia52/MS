@@ -28,7 +28,7 @@
         -webkit-line-clamp: 4; 
         overflow: hidden;
     
-5  vue计算属性，watch写法
+5  vue计算属性，watch写法，防抖函数
 
     computed: {
         sumData() {
@@ -45,6 +45,10 @@
              immediate: true // 页面初始化执行一次
         }
     }
+
+    onLoad: debounce(function () {
+        console.log('babala')
+    }, 100),
 
 6 生成时间戳
 
@@ -73,3 +77,20 @@
 
     use mysql;
     select user,host from user;
+
+10 h5页面拉起app，没有app跳转下载
+    download() {
+      var ifr = document.createElement("iframe");
+      ifr.src = "happyvoice://app/main?action=room&roomId=" + this.$route.query.roomId; // app配置
+      ifr.style.display = "none";
+      document.body.appendChild(ifr);
+      window.setTimeout(function () {
+        document.body.removeChild(ifr);
+        // 下载地址
+        if(isAndroid()){
+          window.location.href = "https://www.happyyuyin.com/download/happyyuyin_1.0.0_release_2020_11_24.apk"
+        } else if(isIOS()){
+          // window.location.href = ""
+        }
+      }, 1000);
+    },
