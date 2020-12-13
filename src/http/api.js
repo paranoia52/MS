@@ -1,4 +1,4 @@
 import { get, post } from './index'
 
-export const Login = query => post('/adduser', query)
-export const Home = query => get('/', query)
+export const Login = query => post('/users/login', query)
+export const Regist = query => post('/users/add', query)
