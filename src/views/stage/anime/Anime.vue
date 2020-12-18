@@ -11,58 +11,58 @@
     <!-- 3D旋转效果 -->
     <div class="stereo-box">
       <span id="in-front">
-        <img src="@/assets/img/3d/1.jpg" class="in-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
       </span>
       <span id="in-back">
         <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
       </span>
       <span id="in-left">
-        <img src="@/assets/img/3d/3.jpg" class="in-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
       </span>
       <span id="in-right">
-        <img src="@/assets/img/3d/4.jpg" class="in-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
       </span>
       <span id="in-top">
-        <img src="@/assets/img/3d/5.jpg" class="in-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
       </span>
       <span id="in-bottom">
-        <img src="@/assets/img/3d/6.jpg" class="in-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
       </span>
       <!-- 外层图片 -->
       <div class="out-front">
-        <img src="@/assets/img/3d/11.jpg" class="out-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
       </div>
       <div class="out-back">
-        <img src="@/assets/img/3d/22.jpg" class="out-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
       </div>
       <div class="out-left">
-        <img src="@/assets/img/3d/33.jpg" class="out-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
       </div>
       <div class="out-right">
-        <img src="@/assets/img/3d/44.jpg" class="out-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
       </div>
       <div class="out-top">
-        <img src="@/assets/img/3d/55.jpg" class="out-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
       </div>
       <div class="out-bottom">
-        <img src="@/assets/img/3d/66.jpg" class="out-img" alt="">
+        <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
       </div>
     </div>
     <!-- 3D相册效果 -->
     <div class="album">
       <div id="rotephoto">
         <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/2.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/3.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/4.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/5.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/6.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/11.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/22.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/33.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/44.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/55.jpg" alt=""></figure>
-        <figure><img src="@/assets/img/3d/66.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+        <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
       </div>
     </div>
   </div>
