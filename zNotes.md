@@ -52,7 +52,7 @@
 6 生成时间戳
 
     13位（毫秒000） Date.parse( new Date() )
-    13位                   new Date().getTime()
+    13位           new Date().getTime()
 
 7 ios设置index不生效问题
     safrai浏览器是把z-index直接忽略了，直接忽略，忽略，不是别的，记住这个再看下面
@@ -141,3 +141,5 @@
     textarea {                                
         -webkit-user-select:auto; /*webkit浏览器*/
     }
+
+13  

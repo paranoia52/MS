@@ -10,15 +10,15 @@
         <h2>芝麻开门</h2>
         <div>
           <span>账号： </span>
-          <input type="text" v-model="query.username">
+          <input type="text" v-model="query.UserName">
         </div>
         <div>
           <span>密码： </span>
-          <input type="password" v-model="query.password">
+          <input type="password" v-model="query.PassWord">
         </div>
         <div class="submit">
           <span @click="login">登录</span>
-          <span class="register">注册</span>
+          <span>注册</span>
         </div>
       </div>
     </div>
@@ -30,8 +30,8 @@ export default {
   data() {
     return {
       query: {
-        username: "",
-        password: "",
+        UserName: "",
+        PassWord: "",
       },
     };
   },
@@ -72,7 +72,7 @@ export default {
 .login {
   height: 100%;
   #root {
-    background: url("../../assets/img/bg.jpg") no-repeat;
+    // background: url("../../assets/img/bg.jpg") no-repeat;
     background-size: 100% 100%;
     width: 100%;
     height: calc(100% - 250px);

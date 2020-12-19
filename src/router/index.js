@@ -74,8 +74,11 @@ const routes = [
   {
     path: '/login',
     component: () => import('@/views/admin/Login.vue'),
+  },
+  {
+    path: '/regist',
+    component: () => import('@/views/admin/Regist.vue'),
   }
-
 ]
 
 const router = new VueRouter({
