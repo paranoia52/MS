@@ -35,7 +35,7 @@
         }
     },
     watch: {
-         '$store.state.user.userInfo': {
+        '$store.state.user.userInfo': {
             handler: function(val) {
                 if (val) {
                     this.$store.dispatch('getBetList')
