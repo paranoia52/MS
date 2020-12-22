@@ -2,12 +2,14 @@
   <div class="admcss" style="height:100%">
     <div class="layout-left" :class="{extend: Opmenu}">
       <ul>
-        <li @click="extendmenu">=></li>
+        <li @click="Opmenu = !Opmenu">
+          <i class="iconfont">&#xe630;</i>
+          <span v-show="delayshow">语音房间</span>
+        </li>
         <li v-for="(el,i) in menuList" :key="i" :class="{ pitch: currentMenu === i }"
           @click="$router.push(el.path);currentMenu=i">
-          <span>{{ i+1 }}</span>
-          <span class="title">{{ el.meta.title }}</span>
-          <i class="iconfont">&#xe606;</i>
+          <i class="iconfont" :class="el.meta.icon"></i>
+          <span v-show="delayshow" class="title">{{ el.meta.title }}</span>
         </li>
       </ul>
     </div>
@@ -21,9 +23,10 @@ import router from "@/router/index";
 export default {
   data() {
     return {
-      Opmenu: false,
-      currentMenu: 0,
-      menuList: [],
+      Opmenu: false,    // 侧栏的伸缩
+      delayshow: false, // 显示标题
+      currentMenu: 0,   // 当前菜单
+      menuList: [],     // 根据路由配置显示的菜单列表
     };
   },
   created() {
@@ -32,44 +35,53 @@ export default {
         this.menuList = element.children;
       }
     });
-    console.log(this.menuList);
   },
-  methods:{
-    extendmenu(){
-      this.$toast('消息');
-      this.Opmenu = !this.Opmenu
-    }
-  }
+  watch: {
+    Opmenu: function (value) {
+      if (value) {
+        setTimeout(() => {
+          this.delayshow = true;
+        }, 300);
+      } else {
+        this.delayshow = false;
+      }
+    },
+  },
 };
 </script>
 <style lang="less" scoped>
 .admcss {
   height: 100%;
   display: flex;
+  font-size: 14px;
   .layout-left {
-    width: 90px;
+    width: 56px;
     height: 100%;
-    background: #24292e;
+    background: #000033;
     color: #fff;
-    line-height: 50px;
+    line-height: 56px;
     transition: 0.3s;
-    .title{
-      display: none;
-      padding-left: 10px;
-    }
     &.extend {
-      width: 200px;
+      width: 180px;
       transition: 0.3s;
-      span{
-        display: inline;
-      }
     }
     .pitch {
-      background: #b43934;
+      background: #0066cc;
+    }
+    ul {
+      li {
+        position: relative;
+        height: 56px;
+        i {
+          position: absolute;
+          left: 20px;
+          top: 0;
+        }
+      }
     }
   }
-  .layout-right{
-    margin: 0 50px;
+  .layout-right {
+    // margin: 0 50px;
     flex: 1;
   }
 }

@@ -46,27 +46,27 @@ const routes = [
     children: [
       {
         path: '/userm',
-        meta: { title: '账号管理' },
+        meta: { title: '首页', icon: 'icon-home' },
         component: () => import('@/views/admin/user/UserM.vue'),
       },
       {
         path: '/bookm',
-        meta: { title: '数据记录' },
+        meta: { title: '会员管理', icon: 'icon-person2' },
         component: () => import('@/views/admin/book/BookM.vue'),
       },
       {
         path: '/musicm',
-        meta: { title: '统计报表' },
+        meta: { title: '房间管理', icon: 'icon-folder' },
         component: () => import('@/views/admin/music/MusicM.vue'),
       },
       {
         path: '/wallpaperm',
-        meta: { title: '杀率控制' },
+        meta: { title: '审核管理', icon: 'icon-search' },
         component: () => import('@/views/admin/wallpaper/WallpaperM.vue'),
       },
       {
         path: '/animem',
-        meta: { title: '系统管理' },
+        meta: { title: '系统管理', icon: 'icon-sitting' },
         component: () => import('@/views/admin/anime/AnimeM.vue'),
       },
     ]
