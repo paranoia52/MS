@@ -39,6 +39,12 @@ export default {
     login() {
       Login(this.query).then((res) => {
         console.log(res);
+        if (res.code === 0) {
+          sessionStorage.setItem("token", res.data.token);
+          this.$router.push("/admin");
+        } else{
+          this.$toast(res.msg)
+        }
       });
     },
   },

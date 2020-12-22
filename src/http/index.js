@@ -8,13 +8,16 @@ axios.defaults.headers.post['Content-Type'] = 'application/json; charset=UTF-8'
 // 请求拦截器
 axios.interceptors.request.use(
   config => {
+    if (config.url.indexOf('login') === -1 && sessionStorage.getItem('token')) {
+      xhr.setRequestHeader("token", sessionStorage.getItem('token'))
+    }
     return config
   },
   error => {
     return Promise.error(error)
   })
 
-export function get (url, query) {
+export function get(url, query) {
   return new Promise((resolve, reject) => {
     axios.get(url, { params: query })
       .then(res => {
@@ -32,7 +35,7 @@ export function get (url, query) {
  * @param {String} url [请求的url地址] 
  * @param {Object} query [请求时携带的参数] 
  */
-export function post (url, query) {
+export function post(url, query) {
   return new Promise((resolve, reject) => {
     axios.post(url, JSON.stringify(query))
       .then(res => {
