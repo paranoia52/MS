@@ -15,8 +15,9 @@
     -o-transform: perspective(1000);
     -webkit-transform: perspective(1000);
 
-4 文字省略号（单行，溢出隐藏）
- 
+4 偶尔用到的CSS
+
+    单行，添加省略号
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
@@ -27,6 +28,11 @@
         /*设置省略号在容器第四行文本后*/
         -webkit-line-clamp: 4; 
         overflow: hidden;
+    
+    抬头缩进
+      text-indent: 2em;
+    字间距
+      text-indent：5px;
     
 5 vue计算属性，watch写法，防抖函数
     computed: {
@@ -142,4 +148,5 @@
         -webkit-user-select:auto; /*webkit浏览器*/
     }
 
-13  
+13  常用正则
+    手机号 var reg = /^[1][3,4,5,7,8][0-9]{9}$/;   if (!reg.test(phoneNumer)){}

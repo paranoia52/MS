@@ -4,8 +4,19 @@
       <span>当前 > {{ $route.meta.title }}</span>
       <span style="color:red;cursor: pointer;" @click="logout">退出</span>
     </div>
+    <div class="search">
+      <div>
+        <span>冻结</span>
+        <span>解冻</span>
+      </div>
+      <div>
+        <input type="button" value="重置">
+        <span></span>
+      </div>
+    </div>
     <div class="table">
       <div class="table-head">
+        <div>[ ]</div>
         <div>ID</div>
         <div>稀有ID</div>
         <div>会员昵称</div>
@@ -23,6 +34,7 @@
       </div>
       <div class="table-body"></div>
     </div>
+    <iframe src="http://192.168.150.254:8081/#/users/userList" height="850" width="1800" />
   </div>
 </template>
 <script>
@@ -54,6 +66,11 @@ export default {
     // padding: 25px 0;
     justify-content: space-between;
   }
+  .search {
+    width: 100%;
+    position: absolute;
+    top: 150px;
+  }
   .table {
     position: absolute;
     top: 180px;
@@ -65,7 +82,7 @@ export default {
       line-height: 30px;
       font-weight: 700;
       > div {
-        width: 70px;
+        width: 100px;
         border: 0.5px solid #ddd;
         border-right: none;
         &:last-child {
