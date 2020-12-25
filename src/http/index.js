@@ -3,7 +3,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = BaseUrl
 axios.defaults.timeout = 5000
-axios.defaults.headers.post['Content-Type'] = 'application/json; charset=UTF-8'
+axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 
 // 请求拦截器
 axios.interceptors.request.use(

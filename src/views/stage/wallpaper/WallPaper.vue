@@ -1,5 +1,5 @@
 <template>
-  <div class="wallpaper">wallpaper</div>
+  <div class="wallpaper"></div>
 </template>
 
 <script>

@@ -3,9 +3,9 @@
     <!-- 导航 -->
     <div class="navbar">
       <ul>
-        <li v-for="(el,i) in navList" :key="i" :class="{active: i == navIndex}"
-          @click="navIndex = i;$router.push(el.path)">
-          {{el.title}}</li>
+        <li v-for="(el,i) in menuList" :key="i" :class="{active: i == menuIndex}"
+          @click="menuIndex = i;$router.push(el.path)">
+          {{el.meta.title}}</li>
       </ul>
     </div>
     <div class="main">
@@ -19,26 +19,31 @@
 </template>
 
 <script>
+import router from "@/router/index";
 export default {
   data() {
     return {
-      navList: [
-        { title: "动画", path: "/anime" },
-        { title: "壁纸", path: "/wallpaper" },
-        { title: "音乐", path: "/music" },
-        { title: "书屋", path: "/book" },
-      ],
-      navIndex: 0,
+      menuList: [],
+      menuIndex: 0,
     };
+  },
+  created() {
+    router.options.routes.forEach((element) => {
+      if (element.path === "/index") {
+        this.menuList = element.children;
+      }
+    });
+    console.log(this.menuList);
   },
 };
 </script>
 <style lang="less" scoped>
 .index {
   .navbar {
-    height: 44px;
-    background-color: #000;
-    background: linear-gradient(90deg, #000 0, #f1bf48 40%, #066dab);
+    // height: 44px;
+    background-color: rgb(247, 241, 241);
+    height: 1px;
+    // background: linear-gradient(90deg, #000 0, #f1bf48 40%, #066dab);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     ul {
       width: 80%;

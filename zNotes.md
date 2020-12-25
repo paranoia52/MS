@@ -85,20 +85,21 @@
 
 10  h5页面拉起app，没有app跳转下载
     download() {
-      var ifr = document.createElement("iframe");
-      ifr.src = "happyvoice://app/main?action=room&roomId=" + this.$route.query.roomId; // app配置
-      ifr.style.display = "none";
-      document.body.appendChild(ifr);
-      window.setTimeout(function () {
-        document.body.removeChild(ifr);
-        // 下载地址
-        if(isAndroid()){
-          window.location.href = "https://www.happyyuyin.com/download/happyyuyin_1.0.0_release_2020_11_24.apk"
-        } else if(isIOS()){
-          // window.location.href = ""
-        }
-      }, 1000);
-    },
+      const schemeUrl = "happyvoice://app/main"
+      if(isIOS()) {
+        window.location.href = schemeUrl
+        setTimeout(()=>{
+          window.location.href = this.downloadlink
+        },2200)
+      } else{
+        var r = document.createElement("iframe");
+          (r.src = schemeUrl), (r.style.display = "none"), document.body.appendChild(r);
+        setTimeout(()=>{
+          document.body.removeChild(r);
+          window.location.href = this.downloadlink
+        },2200)
+      }
+    }
 
 11  点击复制功能
     <div>

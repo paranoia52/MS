@@ -11,7 +11,7 @@ const routes = [
   {
     path: '/index',
     meta: { title: "首页" },
-    component: () => import('@/views/stage/index/Index.vue'),
+    component: () => import('@/views/stage/Index.vue'),
     children: [
       // {
       //   path: '/',
