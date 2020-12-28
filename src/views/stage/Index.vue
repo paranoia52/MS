@@ -56,14 +56,15 @@ export default {
         cursor: pointer;
       }
       .active {
-        color: rgba(255, 255, 255, 0.9);
+        color: #999;
         font-size: 18px;
       }
     }
   }
   .main {
-    min-height: calc(100vh - 80px);
-    width: 80%;
+    // min-height: calc(100vh - 80px);
+    min-height: 100vh;
+    width: 99%;
     margin: 0 auto;
   }
 }
