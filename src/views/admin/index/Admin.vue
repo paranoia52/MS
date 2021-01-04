@@ -15,11 +15,13 @@
               :name="item.name">
             </el-tab-pane>
           </el-tabs>
-          <transition name="el-fade-in-linear" mode="out-in">
-            <keep-alive>
-              <router-view :key="key" />
-            </keep-alive>
-          </transition>
+          <div style="height:calc(100% - 41px);background: #fff;padding: 15px 0;">
+            <transition name="el-fade-in-linear" mode="out-in">
+              <keep-alive>
+                <router-view :key="key" />
+              </keep-alive>
+            </transition>
+          </div>
         </el-main>
       </el-container>
     </el-container>
@@ -95,7 +97,7 @@ export default {
     min-width: 1150px;
     background-color: #f2f2f2;
     color: #ddd;
-    min-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
     .tabs {
       background-color: #fff;
     }

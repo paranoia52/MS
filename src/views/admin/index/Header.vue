@@ -25,7 +25,10 @@ export default {
     };
   },
   methods: {
-    handleLogout() {},
+    handleLogout() {
+      this.$router.push("/login");
+      sessionStorage.removeItem("token");
+    },
   },
   created() {
     this.timer = setInterval(() => {

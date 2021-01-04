@@ -71,9 +71,11 @@ export default {
 .sidebar {
   height: 100%;
   text-align: left;
+  .el-menu-vertical-demo {
+    min-height: 100vh;
+  }
   .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 160px;
-    min-height: 100vh;
   }
   .el-submenu .el-menu-item {
     min-width: 160px;
