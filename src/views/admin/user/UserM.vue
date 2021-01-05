@@ -23,7 +23,7 @@
         </el-select>
         <el-input v-model="query.Keyword" placeholder="请输入内容" size="small"
           style="width:200px;margin: 0 10px;"></el-input>
-        <el-button type="primary" size="small">查询</el-button>
+        <el-button type="primary" size="small" @click="inquire">查询</el-button>
         <el-button type="primary" size="small">筛选</el-button>
       </div>
     </div>
@@ -34,7 +34,7 @@
       <el-table-column align="center" prop="UserId" label="ID">
         <template slot-scope="scope">
           <el-link type="primary" :underline="false" @click="toUserDetail">
-            {{ scope.row.UserId }}</el-link>
+            {{ '325711' + scope.row.id }}</el-link>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="PrettyUserId" label="稀有ID">
@@ -54,13 +54,13 @@
       </el-table-column>
       <el-table-column align="center" prop="RegisterType" label="注册方式">
         <template slot-scope="scope">
-          <span v-if="scope.row.RegisterType">手机注册</span>
+          <span v-if="!scope.row.RegisterType">手机注册</span>
           <span v-else>-</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="UserType" label="用户类型">
         <template slot-scope="scope">
-          <span v-if="scope.row.UserType == 1">主播</span>
+          <span v-if="!scope.row.UserType == 1">主播</span>
         </template>
       </el-table-column>
       <el-table-column align="center" prop="IsSuperManage" label="权限">
@@ -77,7 +77,7 @@
       </el-table-column>
       <el-table-column align="center" prop="CreateTime" label="注册时间">
         <template slot-scope="scope">
-          {{ scope.row.CreateTime}}
+          {{ formatTimeUTC(scope.row.CreateTime) }}
         </template>
       </el-table-column>
       <el-table-column align="center" prop="IsOnline" label="在线状态">
@@ -88,28 +88,45 @@
       </el-table-column>
       <el-table-column align="center" prop="Status" label="账号状态">
         <template slot-scope="scope">
-          <span v-if="scope.row.Status">正常</span>
+          <span v-if="!scope.row.Status">正常</span>
           <span v-else>-</span>
         </template>
       </el-table-column>
+      <el-table-column align="center" prop="Signature" label="个性签名"></el-table-column>
       <el-table-column align="center" prop="Note" label="操作">
         <template slot-scope="scope">
           <el-link type="primary" :underline="false" @click="operation(scope.row)">修改</el-link>
         </template>
       </el-table-column>
     </el-table>
+    <!-- 分页 -->
+    <el-pagination layout="prev, pager, next" :hide-on-single-page="true" :total="total"
+      @prev-click="prevPage" @next-click="nextPage">
+    </el-pagination>
+    <!-- 修改用户数据弹窗 -->
+    <SetUserInfo :visible="showUserInfo" :form.sync="UserInfo" @cancel="showUserInfo = false" />
   </div>
 </template>
 <script>
-import { formatTime } from "@/tool/filter";
+import { GetUserList } from "@/http/api.js";
+import { formatTimeUTC } from "@/tool/filter";
+import SetUserInfo from "./child/SetUserInfo.vue";
 export default {
+  components: {
+    SetUserInfo,
+  },
   data() {
     return {
       query: {
-        KeyType: 1,
+        page: 1,
+        KeyType: 0, // 0是全部  1是ID  2是昵称
         Keyword: "",
       },
       options: [
+        {
+          value: 0,
+          label: "全部",
+        },
         {
           value: 1,
           label: "ID",
@@ -119,41 +136,39 @@ export default {
           label: "昵称",
         },
       ],
-      tableData: [],
+      tableData: [], // 列表数据
       loading: false,
-      selectList: [],
+      selectList: [], // 选中的用户列
+      // 编辑用户信息
+      showUserInfo: false,
+      UserInfo: {},
+      total: 10,
     };
   },
   methods: {
-    formatTime,
+    formatTimeUTC,
     handleSelection(val) {
       this.selectList = val;
     },
     toUserDetail() {
       console.log("toUserDetail");
     },
-    operation() {
-      console.log("operation");
+    operation(value) {
+      this.showUserInfo = true;
+      this.UserInfo = value;
     },
+    // 条件查询
+    inquire() {
+      GetUserList(this.query).then((res) => {
+        console.log(res);
+        this.tableData = res.data;
+      });
+    },
+    prevPage() {},
+    nextPage() {},
   },
   mounted() {
-    for (let i = 0; i < 10; i++) {
-      this.tableData.push({
-        UserId: "3257099",
-        PrettyUserId: "",
-        NickName: "萌新1927",
-        HeadIcon: "",
-        Phone: "13125698542",
-        RegisterType: "1",
-        UserType: 1,
-        IsSuperManage: "",
-        IsSuperManage: "",
-        PhoneBrand: "",
-        CreateTime: 13414124,
-        IsOnline: true,
-        Status: true,
-      });
-    }
+    this.inquire();
   },
 };
 </script>
