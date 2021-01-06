@@ -34,10 +34,14 @@ export default {
     this.timer = setInterval(() => {
       this.nowDate = formatTime(new Date().getTime());
     }, 1000);
-    for (let i of this.$route.matched) {
-      // console.log(i);
-      this.levelList.push(i.meta.title);
-    }
+  },
+  watch: {
+    $route: function () {
+      this.levelList = [];
+      for (let i of this.$route.matched) {
+        this.levelList.push(i.meta.title);
+      }
+    },
   },
 };
 </script>

@@ -1,13 +1,5 @@
 <template>
   <div class="anime">
-    <!-- 诗词 -->
-    <div class="shici">
-      <div class="zhailu">
-        <div class="title">长亭送别</div>
-        <div class="author">[元]王实甫</div>
-        <div class="content">碧云天，黄花地，西风紧。北雁南飞。晓来谁染霜林醉？总是离人泪。</div>
-      </div>
-    </div>
     <!-- 3D旋转效果 -->
     <div class="stereo-box">
       <span id="in-front">
@@ -70,52 +62,13 @@
 <script>
 export default {
   data() {
-    return {
-      shici: [
-        {
-          title: "长亭送别",
-          author: "[元]王实甫",
-          content: `碧云天，黄花地，西风紧。北雁南飞。晓来谁染霜林醉？总是离人泪。`,
-          abstract: "晓来谁染霜林醉？总是离人泪。",
-        },
-        {
-          title: "雁门太守行",
-          author: "[唐]李贺",
-          content: `黑云压城城欲摧，甲光向日金鳞开。角声满天秋色里，塞上燕脂凝夜紫。
-                    半卷红旗临易水，霜重鼓寒声不起。报君黄金台上意，提携玉龙为君死。`,
-          abstract: "半卷红旗临易水，霜重鼓寒声不起。",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>
 <style lang="less" scoped>
 .anime {
   position: relative;
-  .shici {
-    margin-left: 400px;
-    position: relative;
-    top: 100px;
-    .zhailu {
-      background: #fff;
-      width: 300px;
-      min-height: 140px;
-      padding: 30px 20px;
-      .title {
-        font-size: 20px;
-        color: #333;
-      }
-      .author {
-        font-size: 14px;
-        color: #999;
-        padding: 10px 0 10px 100px;
-      }
-      .content {
-        color: #555;
-      }
-    }
-  }
   // 3D盒子
   .stereo-box {
     width: 200px;

@@ -31,6 +31,7 @@
       text-indent: 2em;
   * 字间距
       text-indent：5px;
+      
 # vue计算属性，watch写法，防抖函数，url在data中书写
   * computed: {
         sumData() {
@@ -127,22 +128,16 @@
     }
 
 # 常用正则
-    手机号 var reg = /^[1][3,4,5,7,8][0-9]{9}$/;   if (!reg.test(phoneNumer)){}
-    邮箱
+    手机号 var reg = /^[1][3,4,5,7,8][0-9]{9}$/;   
+    邮箱   var reg = new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"); 
+
+    if(!reg.test(value)){alert('请输入正确的格式')}
 
 # H5页面清除缓存
     <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
     <META HTTP-EQUIV="expires" CONTENT="0">
   
-# 事件代理
-  * [事件代理详解] https://www.cnblogs.com/liugang-vip/p/5616484.html  
-
-# 不使用循环，如何创建一个长度为100的数组
-    var arr = Object.keys(Array.apply(null, {length:100})).map(function(item){return +item;});
-    var arr = Array.from({length:100}, (v,k) => k);
-    var arr = new Array(100).keys();
-    var arr = [...Array(100).keys()];
-    var arr = Object.keys(String(Array(101)));
-    var arr = Object.keys(new Int8Array(100)).map(function(item){return +item;});
-    var arr = new Array(100).toString().split(',').map(function(item,index){return index;});
+# 一些好的文章
+  * 事件代理详解        [https://www.cnblogs.com/liugang-vip/p/5616484.html]
+  * express中间件      [https://www.cnblogs.com/pingfan1990/p/4860389.html] [https://www.oecom.cn/expressinapp-useandapp-all/]

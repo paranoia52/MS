@@ -9,7 +9,7 @@
         <el-button type="primary" size="small" :disabled=" selectList.length ? false : true">
           解冻
         </el-button>
-        <el-button type="warning" size="small" :disabled=" selectList.length ? false : true">
+        <el-button type="warning" size="small" :disabled="false" @click="addUser">
           清除青少年
         </el-button>
       </div>
@@ -23,7 +23,7 @@
         </el-select>
         <el-input v-model="query.Keyword" placeholder="请输入内容" size="small"
           style="width:200px;margin: 0 10px;"></el-input>
-        <el-button type="primary" size="small" @click="inquire">查询</el-button>
+        <el-button type="primary" size="small" @click="search">查询</el-button>
         <el-button type="primary" size="small">筛选</el-button>
       </div>
     </div>
@@ -101,14 +101,14 @@
     </el-table>
     <!-- 分页 -->
     <el-pagination layout="prev, pager, next" :hide-on-single-page="true" :total="total"
-      @prev-click="prevPage" @next-click="nextPage">
+      :current-page="query.pageNo" @current-change="changPage">
     </el-pagination>
     <!-- 修改用户数据弹窗 -->
     <SetUserInfo :visible="showUserInfo" :form.sync="UserInfo" @cancel="showUserInfo = false" />
   </div>
 </template>
 <script>
-import { GetUserList } from "@/http/api.js";
+import { GetUserList, Regist } from "@/http/api.js";
 import { formatTimeUTC } from "@/tool/filter";
 import SetUserInfo from "./child/SetUserInfo.vue";
 export default {
@@ -118,7 +118,7 @@ export default {
   data() {
     return {
       query: {
-        page: 1,
+        pageNo: 1,
         KeyType: 0, // 0是全部  1是ID  2是昵称
         Keyword: "",
       },
@@ -150,22 +150,48 @@ export default {
     handleSelection(val) {
       this.selectList = val;
     },
-    toUserDetail() {
-      console.log("toUserDetail");
+    // 用户详情
+    toUserDetail(val) {
+      console.log(val);
     },
-    operation(value) {
+    // 编辑用户信息
+    operation(val) {
       this.showUserInfo = true;
-      this.UserInfo = value;
+      this.UserInfo = val;
     },
     // 条件查询
+    search() {
+      this.query.pageNo = 1;
+      this.inquire();
+    },
+    changPage(val) {
+      this.query.pageNo = val;
+      this.inquire();
+    },
+    // 获取数据
     inquire() {
       GetUserList(this.query).then((res) => {
         console.log(res);
-        this.tableData = res.data;
+        this.tableData = res.data.data;
+        this.total = res.data.total;
+        this.query.pageNo = res.data.pageNo;
       });
     },
-    prevPage() {},
-    nextPage() {},
+    // 添加用户
+    addUser() {
+      const query = {
+        UserName: "admin10",
+        PassWord: "admin",
+        NickName: "vnijianwed",
+        Sex: 0,
+        Age: 20,
+        Signature: "",
+        HeadIcon: "",
+      };
+      Regist(query).then((res) => {
+        console.log(res);
+      });
+    },
   },
   mounted() {
     this.inquire();

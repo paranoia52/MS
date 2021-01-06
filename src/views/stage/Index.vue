@@ -40,7 +40,7 @@ export default {
 <style lang="less" scoped>
 .index {
   .navbar {
-    // height: 44px;
+    height: 44px;
     background-color: rgb(247, 241, 241);
     height: 1px;
     // background: linear-gradient(90deg, #000 0, #f1bf48 40%, #066dab);
