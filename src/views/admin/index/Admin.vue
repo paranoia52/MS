@@ -75,7 +75,7 @@ export default {
       }
     },
     addTabsClick(val) {
-      console.log(val);
+      // console.log(val);
       this.$router.push(
         this.tabList[this.tabList.findIndex((i) => i.name == val)].path
       );
