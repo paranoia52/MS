@@ -19,9 +19,9 @@ const routes = [
     component: () => import('@/views/stage/Index.vue'),
     children: [
       {
-        path: '/anime',
-        meta: { title: "动画" },
-        component: () => import('@/views/stage/anime/Anime.vue')
+        path: '/essay',
+        meta: { title: "随笔" },
+        component: () => import('@/views/stage/essay/Essay.vue')
       },
       {
         path: '/music',
@@ -38,6 +38,11 @@ const routes = [
         meta: { title: "书籍" },
         component: () => import('@/views/stage/book/Book.vue')
       },
+      {
+        path: '/anime',
+        meta: { title: "动画" },
+        component: () => import('@/views/stage/anime/Anime.vue')
+      },
     ]
   },
   admin
@@ -51,7 +56,7 @@ const router = new VueRouter({
 
 // 以下代码解决路由地址重复点击的报错问题
 const originalPush = VueRouter.prototype.push
-VueRouter.prototype.push = function push(location) {
+VueRouter.prototype.push = function push (location) {
   return originalPush.call(this, location).catch(err => err)
 }
 

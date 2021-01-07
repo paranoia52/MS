@@ -41,14 +41,13 @@ export default {
 .index {
   .navbar {
     height: 44px;
-    background-color: rgb(247, 241, 241);
-    height: 1px;
-    // background: linear-gradient(90deg, #000 0, #f1bf48 40%, #066dab);
+    // background-color: rgb(247, 241, 241);
+    background: linear-gradient(90deg, #000 0, #f1bf48 40%, #066dab);
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     ul {
       width: 80%;
       margin: 0 auto;
-      color: #aaa;
+      color: #DDD;
       display: flex;
       line-height: 44px;
       li {
@@ -56,14 +55,13 @@ export default {
         cursor: pointer;
       }
       .active {
-        color: #999;
+        color: #EEE;
         font-size: 18px;
       }
     }
   }
   .main {
-    // min-height: calc(100vh - 80px);
-    min-height: 100vh;
+    min-height: calc(100vh - 80px);
     width: 99%;
     margin: 0 auto;
   }

@@ -180,7 +180,7 @@ export default {
     // 添加用户
     addUser() {
       const query = {
-        UserName: "admin10",
+        UserName: "admin01",
         PassWord: "admin",
         NickName: "vnijianwed",
         Sex: 0,

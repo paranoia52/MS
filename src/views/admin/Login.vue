@@ -42,8 +42,8 @@ export default {
         if (res.code === 0) {
           sessionStorage.setItem("token", res.data.token);
           this.$router.push("/admin");
-        } else{
-          this.$toast(res.msg)
+        } else {
+          this.$messag(res.msg);
         }
       });
     },
