@@ -56,16 +56,16 @@
       </el-table-column>
     </el-table>
     <!-- 添加歌曲 -->
-    <Add :visible="showAdd" @cancel="showAdd = false" />
+    <AddMusic :visible="showAdd" @cancel="showAdd = false" />
   </div>
 </template>
 <script>
 import { GetMusic } from "@/http/api.js";
 import { formatTimeUTC } from "@/tool/filter";
-import Add from "./child/Add";
+import AddMusic from "./child/AddMusic";
 export default {
   components: {
-    Add,
+    AddMusic,
   },
   data() {
     return {

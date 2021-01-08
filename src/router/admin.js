@@ -14,12 +14,16 @@ export const admin = {
       component: () => import('@/views/admin/user/UserM.vue'),
       children: [
         {
-          path: '/1',
+          path: 'userList',
           meta: { title: '会员列表' },
         },
         {
-          path: '/2',
+          path: 'Invite',
           meta: { title: '邀请管理' },
+        },
+        {
+          path: 'AccountLogoff',
+          meta: { title: '账号注销' },
         },
       ]
     },
@@ -29,8 +33,12 @@ export const admin = {
       component: () => import('@/views/admin/music/MusicM.vue'),
       children: [
         {
-          path: '/1',
+          path: 'roomsList',
           meta: { title: '房间列表' },
+        },
+        {
+          path: 'musicList',
+          meta: { title: '曲库管理' },
         },
       ]
     },
@@ -40,19 +48,19 @@ export const admin = {
       component: () => import('@/views/admin/wallpaper/WallpaperM.vue'),
       children: [
         {
-          path: '/1',
+          path: 'userAudit',
           meta: { title: '用户审核' },
         },
         {
-          path: '/2',
+          path: 'roomAudit',
           meta: { title: '房间审核' },
         },
         {
-          path: '/3',
+          path: 'autonymSGS',
           meta: { title: '实名认证' },
         },
         {
-          path: '/4',
+          path: 'anchorSGS',
           meta: { title: '主播认证' },
         },
       ]
@@ -63,15 +71,15 @@ export const admin = {
       component: () => import('@/views/admin/anime/AnimeM.vue'),
       children: [
         {
-          path: '/1',
+          path: 'userReport',
           meta: { title: '个人举报' },
         },
         {
-          path: '/2',
+          path: 'roomsReport',
           meta: { title: '房间举报' },
         },
         {
-          path: '/3',
+          path: 'questionReport',
           meta: { title: '问题反馈' },
         },
       ]
@@ -81,11 +89,11 @@ export const admin = {
       meta: { title: '广告管理', icon: 'el-icon-reading' },
       children: [
         {
-          path: '/1',
+          path: 'ADrelease',
           meta: { title: '广告投放' },
         },
         {
-          path: '/2',
+          path: 'ADAnalysis',
           meta: { title: '公告分析' },
         },
       ]
@@ -95,7 +103,7 @@ export const admin = {
       meta: { title: '商品管理', icon: 'el-icon-sell' },
       children: [
         {
-          path: '/1',
+          path: 'goodsList',
           meta: { title: '钻石列表' },
         },
       ]
@@ -105,11 +113,11 @@ export const admin = {
       meta: { title: '礼物管理', icon: 'el-icon-present' },
       children: [
         {
-          path: '/1',
+          path: 'GiftList',
           meta: { title: '礼物列表' },
         },
         {
-          path: '/2',
+          path: 'sendGifts',
           meta: { title: '送礼列表' },
         },
       ]
@@ -119,23 +127,23 @@ export const admin = {
       meta: { title: '订单管理', icon: 'el-icon-document' },
       children: [
         {
-          path: '/1',
+          path: 'payRecord',
           meta: { title: '充值记录' },
         },
         {
-          path: '/2',
+          path: 'diamond',
           meta: { title: '钻石明细' },
         },
         {
-          path: '/3',
+          path: 'turnoverRent',
           meta: { title: '分成管理' },
         },
         {
-          path: '/4',
+          path: 'remainingBalance',
           meta: { title: '余额明细' },
         },
         {
-          path: '/5',
+          path: 'WithdrawManage',
           meta: { title: '提现管理' },
         },
       ]
@@ -143,30 +151,39 @@ export const admin = {
     {
       path: '/system',
       meta: { title: '系统管理', icon: 'el-icon-setting' },
+      component: () => import('@/views/admin/role/Role.vue'),
       children: [
         {
-          path: '/1',
+          path: 'AdminList',
           meta: { title: '管理员列表' },
         },
         {
-          path: '/2',
+          path: 'AdminRecord',
           meta: { title: '管理员记录' },
         },
         {
-          path: '/3',
+          path: 'permissionSet',
           meta: { title: '权限设置' },
         },
         {
-          path: '/4',
+          path: 'editionManage',
           meta: { title: '版本管理' },
         },
         {
-          path: '/5',
+          path: 'ServerManage',
           meta: { title: '服务器管理' },
         },
         {
-          path: '/6',
+          path: 'Custom',
           meta: { title: '自定义配置' },
+        },
+        {
+          path: 'setRobot',
+          meta: { title: '机器人配置' },
+        },
+        {
+          path: 'apkUpload',
+          meta: { title: 'apk配置' },
         },
       ]
     },

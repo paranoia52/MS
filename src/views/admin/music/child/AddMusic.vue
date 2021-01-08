@@ -76,6 +76,7 @@ export default {
             if (res.code == 0) {
               this.$emit("cancel");
               this.$message("添加成功");
+              this.form = {};
             }
           });
         } else {

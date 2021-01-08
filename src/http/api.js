@@ -13,3 +13,8 @@ export const SetUserInfo = query => post('/users/updata', query)
 export const AddMusic = query => post('/music/add', query)
 // 获取歌曲列表
 export const GetMusic = query => post('/music/query', query)
+
+// 获取角色列表
+export const GetRole = query => post('/role/query', query)
+// 添加角色
+export const AddRole = query => post('/role/add', query)

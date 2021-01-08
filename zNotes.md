@@ -31,7 +31,11 @@
       text-indent: 2em;
   * 字间距
       text-indent：5px;
-      
+
+# 常用方法
+  数组转字符串  join
+  字符串转数组  split
+
 # vue计算属性，watch写法，防抖函数，url在data中书写
   * computed: {
         sumData() {
