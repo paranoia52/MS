@@ -18,3 +18,5 @@ export const GetMusic = query => post('/music/query', query)
 export const GetRole = query => post('/role/query', query)
 // 添加角色
 export const AddRole = query => post('/role/add', query)
+// 删除角色
+export const DelRole = query => get('/role/del', query)

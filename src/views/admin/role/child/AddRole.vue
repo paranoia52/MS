@@ -1,13 +1,9 @@
 <template>
   <div class="addrole">
-    <div>
-      {{ updateform }}
-    </div>
     <el-tabs type="border-card" key="tabs">
       <el-tab-pane v-for="(item,index) in data" :key="index" :label="menu_title[index]">
         <el-tree v-for="(child,idx) of item" :key="idx" :data="child" :ref="child[0].id"
-          :default-checked-keys="updateform.Menu" show-checkbox node-key="id" default-expand-all
-          :props="defaultProps">
+          :default-checked-keys="updateform.Menu" show-checkbox node-key="id" default-expand-all>
         </el-tree>
       </el-tab-pane>
     </el-tabs>
@@ -55,14 +51,19 @@ export default {
   watch: {
     updateform: {
       handler: function (val) {
-        // this.handleConfirm();
+        if (this.updateform.Menu) {
+          for (const i in this.data) {
+            for (const j of this.data[i]) {
+              this.$refs[j[0].id][0].setCheckedKeys(this.updateform.Menu, true);
+            }
+          }
+        }
       },
       immediate: true, // 页面初始化执行一次
     },
   },
   created() {
     this.filterTree();
-    this.updateform = this.updateform;
   },
   methods: {
     handleConfirm() {
@@ -77,14 +78,14 @@ export default {
             }
           }
         }
-        // AddRole(this.updateform).then((res) => {
-        //   console.log(res);
-        //   if (res.code == 0) {
-        //     this.updateform = { RoleName: "", Intro: "", Menu: [] };
-        //     this.$emit("cancel");
-        //   }
-        //   this.$message(res.msg);
-        // });
+        AddRole(this.updateform).then((res) => {
+          console.log(res);
+          if (res.code == 0) {
+            this.updateform = { RoleName: "", Intro: "", Menu: [] };
+            this.$emit("save");
+          }
+          this.$message(res.msg);
+        });
       } else {
         this.$message("请填写必要的参数");
       }

@@ -205,5 +205,9 @@ export default {
     justify-content: space-between;
     margin: 10px;
   }
+  /deep/ .el-pagination {
+    background: #fff;
+    text-align: right;
+  }
 }
 </style>

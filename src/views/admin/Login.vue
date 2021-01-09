@@ -7,7 +7,7 @@
       </div>
       <!-- 登录表单 -->
       <div class="form">
-        <h2>芝麻开门</h2>
+        <h2>语音房间后台管理系统1.0.0</h2>
         <div>
           <span>账号： </span>
           <input type="text" v-model="query.UserName">
@@ -79,6 +79,7 @@ export default {
   height: 100%;
   #root {
     // background: url("../../assets/img/bg.jpg") no-repeat;
+    background: #0094ff;
     background-size: 100% 100%;
     width: 100%;
     height: calc(100% - 250px);
