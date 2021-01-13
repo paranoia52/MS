@@ -18,9 +18,9 @@
 
 # CSS
   * 单行，添加省略号
-    overflow: hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
   * 多行省略号：
       display: -webkit-box;
       -webkit-box-orient: vertical;
@@ -31,6 +31,12 @@
       text-indent: 2em;
   * 字间距
       text-indent：5px;
+  * 奇数偶数选择器
+      div:nth-child(odd) {}
+      div:nth-child(even) {}
+  * 文字竖着排
+      -webkit-writing-mode: vertical-rl; // 文字竖排
+      writing-mode: vertical-rl;
 
 # 常用方法
   数组转字符串  join

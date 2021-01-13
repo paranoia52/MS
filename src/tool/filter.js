@@ -8,17 +8,15 @@ export const formatTime = (time) => {
     const M =
         (date.getMonth() + 1 < 10
             ? "0" + (date.getMonth() + 1)
-            : date.getMonth() + 1) + "-";
+            : date.getMonth() + 1);
     const D = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
     const h = date.getHours();
     const m = date.getMinutes();
     const s = date.getSeconds();
     return (
-        Y +
-        "-" +
-        M +
-        D +
-        " " +
+        Y + "-" +
+        M + "-" +
+        D + " " +
         (h.toString().length === 1 ? "0" + h + ":" : h + ":") +
         (m.toString().length === 1 ? "0" + m + ":" : m + ":") +
         (s.toString().length === 1 ? "0" + s : s)
