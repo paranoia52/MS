@@ -18,15 +18,29 @@
           <img class="debris1" v-show="egganimation3 && !egganimation4"
             src="@/assets/img/smashegg/debris1.png">
           <img class="egg-img" v-show="!egganimation4" src="@/assets/img/smashegg/goldegg.png"
-            @click="smash('gold')">
+            @click="smash()">
           <img class="bottom-img" src="@/assets/img/smashegg/pedestal.png">
         </div>
       </div>
       <!-- 银蛋 -->
       <div class="eggs-item">
         <div style="position:relative;">
-          <img class="egg-img" src="@/assets/img/smashegg/silveregg.png">
-          <img class="bottom-img" src="@/assets/img/smashegg/pedestal.png" alt="">
+          <img class="debris3 debsli" v-show="egganimation4"
+            src="@/assets/img/smashegg/debris3.png">
+          <img class="debris4 debsli" v-show="egganimation4"
+            src="@/assets/img/smashegg/debris4.png">
+          <img class="debris2 debsli" v-show="egganimation4"
+            src="@/assets/img/smashegg/debris2.png">
+          <img class="debris5" v-show="egganimation4" src="@/assets/img/smashegg/gift-ribbon.png">
+          <img class="debris6" v-show="egganimation4" src="@/assets/img/smashegg/gift-bg.png">
+          <img class="debris7" v-show="egganimation4" src="@/assets/img/smashegg/gift-noumenon.png">
+          <img class="hammer-img" :class="{active:egganimation2}" v-show="egganimation1"
+            src="@/assets/img/smashegg/hammer2.png">
+          <img class="debris1 debsli" v-show="egganimation3 && !egganimation4"
+            src="@/assets/img/smashegg/debris1.png">
+          <img class="egg-img" v-show="!egganimation4" src="@/assets/img/smashegg/silveregg.png"
+            @click="smash()">
+          <img class="bottom-img" src="@/assets/img/smashegg/pedestal.png">
         </div>
       </div>
     </div>
@@ -49,6 +63,7 @@
   </div>
 </template>
 <script>
+import { debounce } from "@/tool/filter";
 import Popup from "@/components/Popup";
 export default {
   components: {
@@ -99,6 +114,15 @@ export default {
       }, 500);
     },
     toggleEgg(index) {
+      // 已经砸蛋了 不允许切换
+      if (
+        this.egganimation1 ||
+        this.egganimation2 ||
+        this.egganimation3 ||
+        this.egganimation4
+      ) {
+        return;
+      }
       this.toggle = index;
       if (index) {
         this.$refs.eggcontainer.style = "transform: translateX(-50%);";
@@ -219,6 +243,9 @@ export default {
         top: 10px;
         z-index: 7;
         animation: scalc 2s forwards;
+      }
+      .debsli {
+        filter: grayscale(1);
       }
     }
   }

@@ -27,7 +27,9 @@
     <div class="option">
       <div style="display:flex;align-items:center;">
         <div style="flex:1;">
-          <img style="width: 21px;height: 25px;" src="@/assets/img/smashegg/hammer.png" alt="">
+          <img v-if="eggindex==0" style="width:21px;height:25px;"
+            src="@/assets/img/smashegg/hammer.png">
+          <img v-else style="width: 21px;height: 25px;" src="@/assets/img/smashegg/hammer2.png">
           <span>{{['金锤','银锤'][eggindex]}}：{{ balance.hammer }}/{{ smashQuery.count }}</span>
         </div>
         <div style="flex:1;">
@@ -48,9 +50,11 @@
     <Popup v-model="showBuy">
       <div class="buyhammer">
         <div style="margin:20px auto 10px;display:flex;justify-content:Center;">
-          <img src="@/assets/img/smashegg/hammer.png" alt="">
-          <span
-            style="text-shadow:1px 1px 1px #9B372B;color:#fff;">{{['金锤子','银锤子'][eggindex]}}</span>
+          <img v-if="eggindex==0" src="@/assets/img/smashegg/hammer.png">
+          <img v-else src="@/assets/img/smashegg/hammer2.png">
+          <span style="text-shadow:1px 1px 1px #9B372B;color:#fff;">
+            {{['金锤子','银锤子'][eggindex]}}
+          </span>
         </div>
         <div class="count">
           <span>数量</span>
