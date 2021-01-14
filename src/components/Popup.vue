@@ -1,5 +1,7 @@
 <template>
-  <div class="popup" v-if="show" @click="show = false"></div>
+  <div class="popup" v-if="show" @click.self="show= false">
+    <slot></slot>
+  </div>
 </template>
 <script>
 export default {
@@ -9,14 +11,17 @@ export default {
     };
   },
   props: {
-    showPop: Boolean,
+    value: {
+      default: true,
+      type: Boolean,
+    },
   },
   watch: {
-    showPop(val) {
+    value(val) {
       this.show = val;
     },
     show(val) {
-      this.$emit("close", val);
+      this.$emit("input", val);
     },
   },
 };
@@ -27,8 +32,11 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 11;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
