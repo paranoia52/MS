@@ -13,12 +13,11 @@
       <div class="header-right">
         <span style="margin: 0 10px;font-size:16px;color:#333;">搜索条件</span>
         <el-select v-model="query.KeyType" size="small" style="width:150px" placeholder="请选择">
-          <el-option v-for="item in options" :key="item.value" :label="item.label"
-            :value="item.value">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
           </el-option>
         </el-select>
-        <el-input v-model="query.Keyword" placeholder="请输入内容" size="small"
-          style="width:200px;margin: 0 10px;"></el-input>
+        <el-input v-model="query.Keyword" placeholder="请输入内容" size="small" style="width:200px;margin: 0 10px;">
+        </el-input>
         <el-button type="primary" size="small" @click="search">搜索</el-button>
       </div>
     </div>
@@ -28,15 +27,14 @@
       <el-table-column type="selection" width="55"></el-table-column>
       <el-table-column align="center" prop="Title" label="歌曲名称"></el-table-column>
       <el-table-column align="center" prop="Author" label="演唱者"></el-table-column>
-      <el-table-column align="center" label="上传者">
+      <el-table-column align="center" label="歌词">
         <template slot-scope="scope">
-          <span v-if="scope.row.RegisterType">haochao</span>
-          <span v-else>-</span>
+          <span>{{scope.row.Lyric ? 1:2}}</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="Type" label="状态">
+      <el-table-column align="center" label="封面">
         <template slot-scope="scope">
-          <span>{{['上架中','上架中','上架中','上架中'][scope.row.Type]}}</span>
+          <img :src="scope.row.Cover" alt="">
         </template>
       </el-table-column>
       <el-table-column align="center" prop="Phone" label="修改时间">

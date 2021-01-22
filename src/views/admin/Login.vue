@@ -6,8 +6,8 @@
         <div class="star" style="top: 0px;left: 500px;"></div>
       </div>
       <!-- 登录表单 -->
-      <div class="form">
-        <h2>语音房间后台管理系统1.0.0</h2>
+      <div class="form" v-if="!isRegist">
+        <h2>{{true?'芝麻开门':'语音房间后台管理系统1.0.0'}}</h2>
         <div>
           <span>账号： </span>
           <input type="text" v-model="query.UserName">
@@ -18,14 +18,55 @@
         </div>
         <div class="submit">
           <span @click="login">登录</span>
-          <span>注册</span>
+          <span @click="isRegist = true">注册</span>
+        </div>
+      </div>
+      <div class="form" v-else>
+        <h2>账号注册</h2>
+        <div>
+          <span>账号： </span>
+          <input type="text" v-model="regQuery.UserName">
+        </div>
+        <div>
+          <span>密码： </span>
+          <input type="password" v-model="regQuery.PassWord">
+        </div>
+        <div>
+          <span>昵称： </span>
+          <input type="text" v-model="regQuery.NickName">
+        </div>
+        <div>
+          <span>简介： </span>
+          <input type="text" v-model="regQuery.Signature">
+        </div>
+        <div>
+          <span>年龄： </span>
+          <input type="number" v-model="regQuery.Age">
+        </div>
+        <div>
+          <span>性别： </span>
+          <el-radio-group v-model="regQuery.Sex">
+            <el-radio :label="1">男</el-radio>
+            <el-radio :label="0">女</el-radio>
+          </el-radio-group>
+        </div>
+        <div>
+          <span>头像： </span>
+          <el-upload class="avatar-uploader" action="http://127.0.0.1:3000/upload" :show-file-list="false"
+            :on-success="handleAvatarSuccess">
+            <i class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </div>
+        <div class="submit">
+          <span @click="isRegist = false">登录</span>
+          <span @click="regist">注册</span>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import { Login } from "@/http/api.js";
+import { Login, Regist } from "@/http/api.js";
 export default {
   data() {
     return {
@@ -33,19 +74,55 @@ export default {
         UserName: "",
         PassWord: "",
       },
+      regQuery: {
+        UserName: "",
+        PassWord: "",
+        NickName: "",
+        Sex: 0,
+        Age: 18,
+        Signature: "",
+        HeadIcon: "",
+      },
+      isRegist: false,
     };
   },
   methods: {
     login() {
+      if (!this.query.UserName || !this.query.PassWord) {
+        this.$message("请填写账号或密码");
+        return;
+      }
       Login(this.query).then((res) => {
         console.log(res);
         if (res.code === 0) {
           sessionStorage.setItem("token", res.data.token);
           this.$router.push("/admin");
         } else {
-          this.$messag(res.msg);
+          this.$message(res.msg);
         }
       });
+    },
+    regist() {
+      if (
+        !this.regQuery.UserName ||
+        !this.regQuery.PassWord ||
+        !this.regQuery.NickName ||
+        !this.regQuery.Sex ||
+        !this.regQuery.Age ||
+        !this.regQuery.Signature ||
+        !this.regQuery.HeadIcon
+      ) {
+        this.$message("请填写必填项");
+        return;
+      }
+      Regist(this.regQuery).then((res) => {
+        console.log(res);
+        this.$message(res.msg);
+      });
+    },
+    handleAvatarSuccess(value) {
+      this.regQuery.HeadIcon = value.url;
+      console.log(value);
     },
   },
   mounted() {
@@ -78,8 +155,8 @@ export default {
 .login {
   height: 100%;
   #root {
-    // background: url("../../assets/img/bg.jpg") no-repeat;
-    background: #0094ff;
+    background: url("../../assets/img/bg.jpg") no-repeat;
+    // background: #0094ff;
     background-size: 100% 100%;
     width: 100%;
     height: calc(100% - 250px);
@@ -117,6 +194,9 @@ export default {
             background: #3a8cff;
           }
         }
+      }
+      .avatar-uploader {
+        display: inline-block;
       }
     }
     #stars {

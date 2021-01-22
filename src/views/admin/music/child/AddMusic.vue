@@ -9,7 +9,11 @@
           <el-input v-model="form.Author" autocomplete="off"></el-input>
         </el-form-item>
         <el-form-item label="封面" label-width="100px" prop="Cover">
-          <el-input v-model="form.Cover" autocomplete="off"></el-input>
+          <!-- <el-input v-model="form.Cover" autocomplete="off"></el-input> -->
+           <el-upload class="avatar-demo" action="http://127.0.0.1:3000/upload"
+            :show-file-list="false" :on-success="handleSuccessCover">
+            <el-button size="small" type="primary">点击上传</el-button>
+          </el-upload>
         </el-form-item>
         <el-form-item label="上传歌曲" label-width="100px" prop="MusicUrl">
           <el-upload class="avatar-demo" action="http://127.0.0.1:3000/upload"
@@ -88,6 +92,9 @@ export default {
     handleSuccess(value) {
       this.form.MusicUrl = value.url;
     },
+    handleSuccessCover(value){
+      this.form.Cover = value.url;
+    }
   },
 };
 </script>

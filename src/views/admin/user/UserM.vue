@@ -9,7 +9,7 @@
         <el-button type="primary" size="small" :disabled=" selectList.length ? false : true">
           解冻
         </el-button>
-        <el-button type="warning" size="small" :disabled="false" @click="addUser">
+        <el-button type="warning" size="small" :disabled="false">
           清除青少年
         </el-button>
       </div>
@@ -108,7 +108,7 @@
   </div>
 </template>
 <script>
-import { GetUserList, Regist } from "@/http/api.js";
+import { GetUserList } from "@/http/api.js";
 import { formatTimeUTC } from "@/tool/filter";
 import SetUserInfo from "./child/SetUserInfo.vue";
 export default {
@@ -175,21 +175,6 @@ export default {
         this.tableData = res.data.data;
         this.total = res.data.total;
         this.query.pageNo = res.data.pageNo;
-      });
-    },
-    // 添加用户
-    addUser() {
-      const query = {
-        UserName: "admin01",
-        PassWord: "admin",
-        NickName: "vnijianwed",
-        Sex: 0,
-        Age: 20,
-        Signature: "",
-        HeadIcon: "",
-      };
-      Regist(query).then((res) => {
-        console.log(res);
       });
     },
   },
