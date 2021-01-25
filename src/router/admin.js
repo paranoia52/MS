@@ -187,5 +187,89 @@ export const admin = {
         },
       ]
     },
+    {
+      path: "/eleSport",
+      name: "eleSport",
+      meta: {
+        title: "电竞管理",
+        icon: "el-icon-s-data",
+        submenu: true
+      },
+      component: () => import('@/views/eleSport/index.vue'),
+      children: [
+        {
+          path: "/eleChart",
+          name: "eleChart",
+          meta: {
+            title: "电竞概览表",
+            power: []
+          },
+          component: () => import('@/views/eleSport/eleChart/index.vue'),
+        },
+        {
+          path: "/eleLibrary",
+          name: "eleLibrary",
+          meta: {
+            title: "资源库",
+            power: []
+          },
+          component: () => import('@/views/eleSport/eleLibrary/index.vue'),
+        },
+        {
+          path: "/eleManage",
+          name: "eleManage",
+          meta: {
+            title: "资源管理",
+            power: []
+          },
+          component: () => import('@/views/eleSport/eleManage/index.vue'),
+        },
+        {
+          path: "/labelManage",
+          name: "labelManage",
+          meta: {
+            title: "标签管理",
+            power: []
+          },
+          component: () => import('@/views/eleSport/labelManage/index.vue'),
+        },
+        {
+          path: "/guideManage",
+          name: "guideManage",
+          meta: {
+            title: "引导项管理",
+            power: []
+          },
+          component: () => import('@/views/eleSport/guideManage/index.vue'),
+        },
+        {
+          path: "/betStatistics",
+          name: "betStatistics",
+          meta: {
+            title: "注单统计表",
+            power: []
+          },
+          component: () => import('@/views/eleSport/betStatistics/index.vue'),
+        },
+        {
+          path: "/winLoseStatistics",
+          name: "winLoseStatistics",
+          meta: {
+            title: "输赢统计表",
+            power: []
+          },
+          component: () => import('@/views/eleSport/winLoseStatistics/index.vue'),
+        },
+        {
+          path: "/gameStatistics",
+          name: "gameStatistics",
+          meta: {
+            title: "赛事统计表",
+            power: []
+          },
+          component: () => import('@/views/eleSport/gameStatistics/index.vue'),
+        }
+      ]
+    }
   ]
 }

@@ -14,7 +14,7 @@
           </template>
           <template v-for="(child, chinx) in item.children">
             <el-menu-item :index="item.path + '/' + child.path" :key="chinx"
-              @click="toMenu(item.path)">
+              @click="toMenu(child.path)">
               {{ child.meta.title }}
             </el-menu-item>
           </template>

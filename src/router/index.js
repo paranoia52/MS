@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    redirect: '/index'
+    redirect: '/login'
   },
   {
     path: '/login',
@@ -60,16 +60,16 @@ VueRouter.prototype.push = function push (location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
-router.beforeEach((to, from, next) => { // beforeEach是router的钩子函数，在进入路由前执行
-  if (to.meta.title) {
-    document.title = to.meta.title
-  }
-  if (to.matched[0].path == '/admin' && !sessionStorage.getItem('token')) {
-    next({ path: '/login' })
-    alert('请先登陆')
-  } else {
-    next()
-  }
-})
+// router.beforeEach((to, from, next) => { // beforeEach是router的钩子函数，在进入路由前执行
+//   if (to.meta.title) {
+//     document.title = to.meta.title
+//   }
+//   if (to.matched[0].path == '/admin' && !sessionStorage.getItem('token')) {
+//     next({ path: '/login' })
+//     alert('请先登陆')
+//   } else {
+//     next()
+//   }
+// })
 
 export default router

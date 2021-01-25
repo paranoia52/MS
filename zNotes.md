@@ -157,3 +157,53 @@
 
 # 控制台对象显示空  打开有值
   * 打印这个对象的语句执行的时候, 对象里面的确是空的,但是当程序继续执行,下面的代码是有对这个对象赋值的语句,所以chrome控制台显示,里面有值,
+
+# vscode setting.json
+  {
+  // tab 大小为2个空格
+  "editor.tabSize": 2,
+  // 100 列后换行
+  "editor.wordWrapColumn": 100,
+  // 保存时格式化
+  "editor.formatOnSave": true,
+  // 开启 vscode 文件路径导航
+  "breadcrumbs.enabled": true,
+  // prettier 设置语句末尾不加分号
+  "prettier.semi": false,
+  // prettier 设置强制单引号
+  "prettier.singleQuote": true,
+  // 选择 vue 文件中 template 的格式化工具
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  // 显示 markdown 中英文切换时产生的特殊字符
+  "editor.renderControlCharacters": true,
+  // 设置 eslint 保存时自动修复
+  "eslint.autoFixOnSave": true,
+  // eslint 检测文件类型
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  // vetur 的自定义设置
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "singleQuote": true,
+      "semi": false
+    }
+  },
+  // 修改500ms后自动保存
+  "editor.formatOnSaveTimeout": 500,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 500,
+  "editor.codeActionsOnSaveTimeout": 500,
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  }
+}
