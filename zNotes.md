@@ -9,13 +9,6 @@
   * 首次加载页面时IOS计算rem单位的时候有问题，切换组件隐藏显示再加载动画的时候能正常显示，
     是因为此时计算rem已经正确了。所以延迟加载首页动画，等页面计算好rem单位后再加载动画就不会出现显示问题了。
 
-# IOS，帧动画 使用rotate() deg单位不显示
-  * 父元素添加以下代码
-    transform: perspective(1000);
-    -moz-transform: perspective(1000);
-    -o-transform: perspective(1000);
-    -webkit-transform: perspective(1000);
-
 # CSS
   * 单行，添加省略号
       overflow: hidden;
@@ -37,10 +30,32 @@
   * 文字竖着排
       -webkit-writing-mode: vertical-rl; // 文字竖排
       writing-mode: vertical-rl;
+  * IOS index无效
+      z-index: 999; /*这里是给chrome用的*/
+      transform: translateZ(1000px); /*这里是给safari用的*/
+  * IOS，帧动画 使用rotate() deg单位不显示
+    父元素添加以下代码
+      transform: perspective(1000);
+      -moz-transform: perspective(1000);
+      -o-transform: perspective(1000);
+      -webkit-transform: perspective(1000);
 
-# 常用方法
-  数组转字符串  join
-  字符串转数组  split
+# JS
+  * 字符串翻转
+    Str = name.split('').reverse().join(''); 
+  * 删除对象某一属性
+    var obj = { name: 'zhagnsan', age: 19}     delete obj.name
+  * 生成当前时间戳
+    new Date().getTime()
+    Date.parse( new Date() )   // 后3位000
+  * VUE 回车键登陆
+    @keyup.enter.native="login"
+
+# 常用正则
+    手机号 var reg = /^[1][3,4,5,7,8][0-9]{9}$/;   
+    邮箱   var reg = new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"); 
+
+    if(!reg.test(value)){alert('请输入正确的格式')}
 
 # vue计算属性，watch写法，防抖函数，url在data中书写
   * computed: {
@@ -63,13 +78,8 @@
     }, 100),
   * imgurl: require('@/assets/img/head.png')
     
-# 生成时间戳
-  * 13位（毫秒000） Date.parse( new Date() )
-  * 13位           new Date().getTime()
+        new Date().getTime()
 
-# ios设置index不生效问题
-  * z-index: 999; /*这里是给chrome用的*/
-    transform: translateZ(1000px); /*这里是给safari用的*/
 
 # h5页面拉起app，没有app跳转下载
   * download() {
@@ -137,26 +147,12 @@
         -webkit-user-select:auto; /*webkit浏览器*/
     }
 
-# 常用正则
-    手机号 var reg = /^[1][3,4,5,7,8][0-9]{9}$/;   
-    邮箱   var reg = new RegExp("^[a-z0-9A-Z]+[- | a-z0-9A-Z . _]+@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-z]{2,}$"); 
 
-    if(!reg.test(value)){alert('请输入正确的格式')}
 
-# H5页面清除缓存
-    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
-    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
-    <META HTTP-EQUIV="expires" CONTENT="0">
   
 # 一些好的文章
   * 事件代理详解        [https://www.cnblogs.com/liugang-vip/p/5616484.html]
   * express中间件      [https://www.cnblogs.com/pingfan1990/p/4860389.html] [https://www.oecom.cn/expressinapp-useandapp-all/]
-
-# 输入密码后按回车键登陆
-  * @keyup.enter.native="login"
-
-# 控制台对象显示空  打开有值
-  * 打印这个对象的语句执行的时候, 对象里面的确是空的,但是当程序继续执行,下面的代码是有对这个对象赋值的语句,所以chrome控制台显示,里面有值,
 
 # vscode setting.json
   {

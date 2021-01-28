@@ -10,20 +10,20 @@ export const admin = {
     },
     {
       path: '/userm',
-      meta: { title: '会员管理', icon: 'el-icon-user' },
+      meta: { title: '账号管理', icon: 'el-icon-user' },
       component: () => import('@/views/admin/user/UserM.vue'),
       children: [
         {
           path: 'userList',
-          meta: { title: '会员列表' },
+          meta: { title: '用户管理' },
         },
         {
           path: 'Invite',
-          meta: { title: '邀请管理' },
+          meta: { title: '运营管理' },
         },
         {
           path: 'AccountLogoff',
-          meta: { title: '账号注销' },
+          meta: { title: '聊天记录' },
         },
       ]
     },
@@ -185,90 +185,6 @@ export const admin = {
           path: 'apkUpload',
           meta: { title: 'apk配置' },
         },
-      ]
-    },
-    {
-      path: "/eleSport",
-      name: "eleSport",
-      meta: {
-        title: "电竞管理",
-        icon: "el-icon-s-data",
-        submenu: true
-      },
-      component: () => import('@/views/eleSport/index.vue'),
-      children: [
-        {
-          path: "/eleChart",
-          name: "eleChart",
-          meta: {
-            title: "电竞概览表",
-            power: []
-          },
-          component: () => import('@/views/eleSport/eleChart/index.vue'),
-        },
-        {
-          path: "/eleLibrary",
-          name: "eleLibrary",
-          meta: {
-            title: "资源库",
-            power: []
-          },
-          component: () => import('@/views/eleSport/eleLibrary/index.vue'),
-        },
-        {
-          path: "/eleManage",
-          name: "eleManage",
-          meta: {
-            title: "资源管理",
-            power: []
-          },
-          component: () => import('@/views/eleSport/eleManage/index.vue'),
-        },
-        {
-          path: "/labelManage",
-          name: "labelManage",
-          meta: {
-            title: "标签管理",
-            power: []
-          },
-          component: () => import('@/views/eleSport/labelManage/index.vue'),
-        },
-        {
-          path: "/guideManage",
-          name: "guideManage",
-          meta: {
-            title: "引导项管理",
-            power: []
-          },
-          component: () => import('@/views/eleSport/guideManage/index.vue'),
-        },
-        {
-          path: "/betStatistics",
-          name: "betStatistics",
-          meta: {
-            title: "注单统计表",
-            power: []
-          },
-          component: () => import('@/views/eleSport/betStatistics/index.vue'),
-        },
-        {
-          path: "/winLoseStatistics",
-          name: "winLoseStatistics",
-          meta: {
-            title: "输赢统计表",
-            power: []
-          },
-          component: () => import('@/views/eleSport/winLoseStatistics/index.vue'),
-        },
-        {
-          path: "/gameStatistics",
-          name: "gameStatistics",
-          meta: {
-            title: "赛事统计表",
-            power: []
-          },
-          component: () => import('@/views/eleSport/gameStatistics/index.vue'),
-        }
       ]
     }
   ]

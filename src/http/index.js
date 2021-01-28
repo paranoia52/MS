@@ -1,4 +1,4 @@
-const BaseUrl = process.env.VUE_APP_BASE_URL
+const BaseUrl = 'http://127.0.0.1:3000'
 import axios from 'axios'
 
 axios.defaults.baseURL = BaseUrl
