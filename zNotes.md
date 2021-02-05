@@ -39,6 +39,22 @@
       -moz-transform: perspective(1000);
       -o-transform: perspective(1000);
       -webkit-transform: perspective(1000);
+  * 浏览器禁止复制
+    *{
+      -webkit-touch-callout:none; /*系统默认菜单被禁用*/
+      -webkit-user-select:none; /*webkit浏览器*/
+      -khtml-user-select:none; /*早期浏览器*/
+      -moz-user-select:none;/*火狐*/
+      -ms-user-select:none; /*IE10*/
+      user-select:none;
+    }
+    以上代码也会禁止输入框的使用，可用以下代码解决：
+    input {
+      -webkit-user-select:auto; /*webkit浏览器*/
+    }
+    textarea {                                
+      -webkit-user-select:auto; /*webkit浏览器*/
+    }
 
 # JS
   * 字符串翻转
@@ -77,9 +93,6 @@
         console.log('babala')
     }, 100),
   * imgurl: require('@/assets/img/head.png')
-    
-        new Date().getTime()
-
 
 # h5页面拉起app，没有app跳转下载
   * download() {
@@ -129,26 +142,6 @@
       currentFocus.focus();
       Toast(flag ? "复制成功" : "复制失败");
     }, 
-
-# 禁止长按选择复制
-    *{
-        -webkit-touch-callout:none; /*系统默认菜单被禁用*/
-        -webkit-user-select:none; /*webkit浏览器*/
-        -khtml-user-select:none; /*早期浏览器*/
-        -moz-user-select:none;/*火狐*/
-        -ms-user-select:none; /*IE10*/
-        user-select:none;
-    }
-    以上代码也会禁止输入框的使用，可用以下代码解决：
-    input {
-        -webkit-user-select:auto; /*webkit浏览器*/
-    }
-    textarea {                                
-        -webkit-user-select:auto; /*webkit浏览器*/
-    }
-
-
-
   
 # 一些好的文章
   * 事件代理详解        [https://www.cnblogs.com/liugang-vip/p/5616484.html]
