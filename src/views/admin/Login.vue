@@ -6,103 +6,146 @@
         <div class="star" style="top: 0px;left: 500px;"></div>
       </div>
       <!-- 登录表单 -->
-      <div class="form" v-if="!isRegist">
-        <h2>{{true?'芝麻开门':'语音房间后台管理系统1.0.0'}}</h2>
-        <div>
-          <span>账号： </span>
-          <input type="text" v-model="query.UserName">
-        </div>
-        <div>
-          <span>密码： </span>
-          <input type="password" v-model="query.PassWord">
-        </div>
-        <div class="submit">
-          <span @click="login">登录</span>
-          <span @click="isRegist = true">注册</span>
-        </div>
+      <div style="width:30%;margin:0 auto;" v-if="!isReg">
+        <el-card>
+          <div slot="header">后台管理系统 Beta V1.11.45</div>
+          <el-form :model="query" ref="dataForm" :rules="loginRules" status-icon>
+            <el-form-item prop="username">
+              <el-input
+                prefix-icon="el-icon-user"
+                placeholder="用户名"
+                auto-complete="on"
+                v-model="query.username"
+              />
+            </el-form-item>
+            <el-form-item prop="password">
+              <el-input
+                prefix-icon="fas fa-lock"
+                placeholder="密码"
+                type="password"
+                @keyup.enter.native="handleLogin"
+                v-model="query.password"
+              ></el-input>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" style="width:100%;" @click.native.prevent="handleLogin">登录</el-button>
+            </el-form-item>
+          </el-form>
+        </el-card>
       </div>
-      <div class="form" v-else>
-        <h2>账号注册</h2>
+      <div style="width:30%;margin:0 auto;" v-else>
+        <el-card>
+          <div slot="header">账号注册</div>
+          <el-form :model="regQuery" ref="regForm" label-width="80px" :rules="RegRules">
+            <el-form-item prop="UserName" label="账号：">
+              <el-input v-model="query.UserName" />
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" style="width:100%;" @click.native.prevent="handleRegist">注册</el-button>
+            </el-form-item>
+          </el-form>
+        </el-card>
+
+        <!-- <h2>账号注册</h2>
         <div>
-          <span>账号： </span>
-          <input type="text" v-model="regQuery.UserName">
+          <span>账号：</span>
+          <input type="text" v-model="regQuery.UserName" />
         </div>
         <div>
-          <span>密码： </span>
-          <input type="password" v-model="regQuery.PassWord">
+          <span>密码：</span>
+          <input type="password" v-model="regQuery.PassWord" />
         </div>
         <div>
-          <span>昵称： </span>
-          <input type="text" v-model="regQuery.NickName">
+          <span>昵称：</span>
+          <input type="text" v-model="regQuery.NickName" />
         </div>
         <div>
-          <span>简介： </span>
-          <input type="text" v-model="regQuery.Signature">
+          <span>简介：</span>
+          <input type="text" v-model="regQuery.Signature" />
         </div>
         <div>
-          <span>年龄： </span>
-          <input type="number" v-model="regQuery.Age">
+          <span>年龄：</span>
+          <input type="number" v-model="regQuery.Age" />
         </div>
         <div>
-          <span>性别： </span>
+          <span>性别：</span>
           <el-radio-group v-model="regQuery.Sex">
             <el-radio :label="1">男</el-radio>
             <el-radio :label="0">女</el-radio>
           </el-radio-group>
         </div>
         <div>
-          <span>头像： </span>
-          <el-upload class="avatar-uploader" action="http://127.0.0.1:3000/upload" :show-file-list="false"
-            :on-success="handleAvatarSuccess">
+          <span>头像：</span>
+          <el-upload
+            class="avatar-uploader"
+            action="http://127.0.0.1:3000/upload"
+            :show-file-list="false"
+            :on-success="handleAvatarSuccess"
+          >
             <i class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </div>
         <div class="submit">
-          <span @click="isRegist = false">登录</span>
-          <span @click="regist">注册</span>
-        </div>
+          <el-button type="primary" style="width:100%;" @click.native.prevent="handleRegist">注册</el-button>
+        </div>-->
       </div>
+      <el-button type="primary" class="btn" @click="isReg = !isReg">切换ip</el-button>
     </div>
   </div>
 </template>
 <script>
-import { Login, Regist } from "@/http/api.js";
+import { Login, Regist } from '@/http/api.js'
 export default {
   data() {
     return {
       query: {
-        UserName: "",
-        PassWord: "",
+        UserName: '',
+        PassWord: '',
       },
       regQuery: {
-        UserName: "",
-        PassWord: "",
-        NickName: "",
+        UserName: '',
+        PassWord: '',
+        NickName: '',
         Sex: 0,
         Age: 18,
-        Signature: "",
-        HeadIcon: "",
+        Signature: '',
+        HeadIcon: '',
       },
-      isRegist: false,
-    };
+      loginRules: {
+        username: [{ required: true, trigger: 'blur' }],
+        password: [{ required: true, trigger: 'blur' }],
+      },
+      RegRules: {
+        UserName: [{ required: true, trigger: 'blur' }],
+        PassWord: [{ required: true, trigger: 'blur' }],
+        NickName: [{ required: true, trigger: 'blur' }],
+        Sex: [{ required: true, trigger: 'blur' }],
+        Age: [{ required: true, trigger: 'blur' }],
+        Signature: [{ required: true, trigger: 'blur' }],
+        HeadIcon: [{ required: true, trigger: 'blur' }],
+      },
+      isReg: false,
+    }
   },
   methods: {
-    login() {
-      if (!this.query.UserName || !this.query.PassWord) {
-        this.$message("请填写账号或密码");
-        return;
-      }
-      Login(this.query).then((res) => {
-        console.log(res);
-        if (res.code === 0) {
-          sessionStorage.setItem("token", res.data.token);
-          this.$router.push("/admin");
+    handleLogin() {
+      this.$refs.dataForm.validate((valid) => {
+        if (valid) {
+          Login(this.query).then((res) => {
+            console.log(res)
+            if (res.code === 0) {
+              sessionStorage.setItem('token', res.data.token)
+              this.$router.push('/admin')
+            } else {
+              this.$message(res.msg)
+            }
+          })
         } else {
-          this.$message(res.msg);
+          this.$message.warning('保存失败！请输入必填项')
         }
-      });
+      })
     },
-    regist() {
+    handleRegist() {
       if (
         !this.regQuery.UserName ||
         !this.regQuery.PassWord ||
@@ -112,93 +155,56 @@ export default {
         !this.regQuery.Signature ||
         !this.regQuery.HeadIcon
       ) {
-        this.$message("请填写必填项");
-        return;
+        this.$message('请填写必填项')
+        return
       }
       Regist(this.regQuery).then((res) => {
-        console.log(res);
-        this.$message(res.msg);
-      });
+        console.log(res)
+        this.$message(res.msg)
+      })
     },
     handleAvatarSuccess(value) {
-      this.regQuery.HeadIcon = value.url;
-      console.log(value);
+      this.regQuery.HeadIcon = value.url
+      console.log(value)
     },
   },
   mounted() {
     this.$nextTick(() => {
-      var stars = document.getElementById("stars");
+      var stars = document.getElementById('stars')
       // js随机生成流星
       for (var j = 0; j < 20; j++) {
-        var newStar = document.createElement("div");
-        newStar.className = "star";
-        newStar.style.top = randomDistance(100, -100) + "px";
-        newStar.style.left = randomDistance(2000, 500) + "px";
-        stars.appendChild(newStar);
+        var newStar = document.createElement('div')
+        newStar.className = 'star'
+        newStar.style.top = randomDistance(100, -100) + 'px'
+        newStar.style.left = randomDistance(2000, 500) + 'px'
+        stars.appendChild(newStar)
       }
       // 封装随机数方法
       function randomDistance(max, min) {
-        var distance = Math.floor(Math.random() * (max - min + 1) + min);
-        return distance;
+        var distance = Math.floor(Math.random() * (max - min + 1) + min)
+        return distance
       }
-      var star = document.getElementsByClassName("star");
+      var star = document.getElementsByClassName('star')
       // 给流星添加动画延时
       for (var i = 0, len = star.length; i < len; i++) {
-        star[i].style.animationDelay = i % 6 == 0 ? "0s" : i * 0.8 + "s";
+        star[i].style.animationDelay = i % 6 == 0 ? '0s' : i * 0.8 + 's'
       }
-    });
+    })
   },
-};
+}
 </script>
 
 <style lang="less" scoped>
 .login {
   height: 100%;
   #root {
-    background: url("../../assets/img/bg.jpg") no-repeat;
-    // background: #0094ff;
-    background-size: 100% 100%;
+    background: url('../../assets/img/bg.jpg') no-repeat;
+    background-size: cover;
     width: 100%;
     height: calc(100% - 250px);
     color: #fff;
     text-align: center;
     padding-top: 250px;
-    .form {
-      width: 250px;
-      margin: 0px auto;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 0 100px 30px;
-      position: relative;
-      z-index: 2;
-      h2 {
-        padding: 20px 0 50px;
-      }
-      input {
-        outline-style: none;
-        padding: 0 10px;
-      }
-      > div {
-        margin: 10px 0;
-      }
-      .submit {
-        margin-top: 30px;
-        display: flex;
-        justify-content: space-between;
-        span {
-          display: block;
-          padding: 5px 20px;
-          border-radius: 30px;
-          background: rgba(255, 255, 255, 0.5);
-          cursor: pointer;
-          &:hover {
-            background: #3a8cff;
-          }
-        }
-      }
-      .avatar-uploader {
-        display: inline-block;
-      }
-    }
     #stars {
       margin: 0 auto;
       max-width: 1600px;
@@ -207,7 +213,7 @@ export default {
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: 1;
+      z-index: -1;
       /deep/ .star {
         display: block;
         width: 1px;
@@ -219,7 +225,7 @@ export default {
         -webkit-animation: star-fall 6s linear infinite;
         -moz-animation: star-fall 6s linear infinite;
         &::after {
-          content: "";
+          content: '';
           display: block;
           border: 0px solid #fff;
           border-width: 0px 90px 2px 90px;
@@ -235,6 +241,13 @@ export default {
           -moz-transform-origin: 0% 100%;
         }
       }
+    }
+    .btn {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100px;
+      opacity: 0.5;
     }
   }
 }
