@@ -1,81 +1,55 @@
 <template>
-  <div class="login">
-    <div id="root">
-      <!-- 流星雨效果 -->
-      <div id="stars">
-        <div class="star" style="top: 0px;left: 500px;"></div>
-      </div>
-      <!-- 登录表单 -->
-      <div style="width:30%;margin:0 auto;" v-if="!isReg">
-        <el-card>
-          <div slot="header">后台管理系统 Beta V1.11.45</div>
-          <el-form :model="query" ref="dataForm" :rules="loginRules" status-icon>
-            <el-form-item prop="username">
-              <el-input
-                prefix-icon="el-icon-user"
-                placeholder="用户名"
-                auto-complete="on"
-                v-model="query.username"
-              />
-            </el-form-item>
-            <el-form-item prop="password">
-              <el-input
-                prefix-icon="fas fa-lock"
-                placeholder="密码"
-                type="password"
-                @keyup.enter.native="handleLogin"
-                v-model="query.password"
-              ></el-input>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" style="width:100%;" @click.native.prevent="handleLogin">登录</el-button>
-            </el-form-item>
-          </el-form>
-        </el-card>
-      </div>
-      <div style="width:30%;margin:0 auto;" v-else>
-        <el-card>
-          <div slot="header">账号注册</div>
-          <el-form :model="regQuery" ref="regForm" label-width="80px" :rules="RegRules">
-            <el-form-item prop="UserName" label="账号：">
-              <el-input v-model="query.UserName" />
-            </el-form-item>
-            <el-form-item>
-              <el-button type="primary" style="width:100%;" @click.native.prevent="handleRegist">注册</el-button>
-            </el-form-item>
-          </el-form>
-        </el-card>
-
-        <!-- <h2>账号注册</h2>
-        <div>
-          <span>账号：</span>
-          <input type="text" v-model="regQuery.UserName" />
-        </div>
-        <div>
-          <span>密码：</span>
-          <input type="password" v-model="regQuery.PassWord" />
-        </div>
-        <div>
-          <span>昵称：</span>
-          <input type="text" v-model="regQuery.NickName" />
-        </div>
-        <div>
-          <span>简介：</span>
-          <input type="text" v-model="regQuery.Signature" />
-        </div>
-        <div>
-          <span>年龄：</span>
-          <input type="number" v-model="regQuery.Age" />
-        </div>
-        <div>
-          <span>性别：</span>
+  <div id="root">
+    <!-- 流星雨效果 -->
+    <div id="stars">
+      <div class="star" style="top: 0px;left: 500px;"></div>
+    </div>
+    <!-- 登录表单 -->
+    <el-card style="width:28%;margin:222px auto;" v-if="!isReg">
+      <div slot="header">后台管理系统 Beta V1.11.45</div>
+      <el-form :model="query" status-icon>
+        <el-form-item>
+          <el-input prefix-icon="el-icon-user" placeholder="账号" v-model="query.UserName" />
+        </el-form-item>
+        <el-form-item>
+          <el-input
+            prefix-icon="el-icon-lock"
+            placeholder="密码"
+            type="password"
+            v-model="query.PassWord"
+          ></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" style="width:100%;" @click.native.prevent="handleLogin">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </el-card>
+    <!-- 注册表单 -->
+    <el-card style="width:28%;margin:222px auto;" v-else>
+      <div slot="header">账号注册</div>
+      <el-form :model="regQuery" label-width="55px">
+        <el-form-item label="账号：">
+          <el-input v-model="regQuery.UserName" />
+        </el-form-item>
+        <el-form-item label="密码：">
+          <el-input v-model="regQuery.PassWord" />
+        </el-form-item>
+        <el-form-item label="昵称：">
+          <el-input v-model="regQuery.NickName" />
+        </el-form-item>
+        <el-form-item label="简介：">
+          <el-input v-model="regQuery.Signature" />
+        </el-form-item>
+        <el-form-item label="年龄：">
+          <el-input v-model="regQuery.Age" />
+        </el-form-item>
+        <el-form-item label="性别：">
           <el-radio-group v-model="regQuery.Sex">
             <el-radio :label="1">男</el-radio>
             <el-radio :label="0">女</el-radio>
           </el-radio-group>
-        </div>
-        <div>
-          <span>头像：</span>
+        </el-form-item>
+        <el-form-item label="头像：">
           <el-upload
             class="avatar-uploader"
             action="http://127.0.0.1:3000/upload"
@@ -84,13 +58,13 @@
           >
             <i class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
-        </div>
-        <div class="submit">
+        </el-form-item>
+        <el-form-item label-width="0px">
           <el-button type="primary" style="width:100%;" @click.native.prevent="handleRegist">注册</el-button>
-        </div>-->
-      </div>
-      <el-button type="primary" class="btn" @click="isReg = !isReg">切换ip</el-button>
-    </div>
+        </el-form-item>
+      </el-form>
+    </el-card>
+    <el-button type="primary" class="btn" @click="isReg = !isReg">切换ip</el-button>
   </div>
 </template>
 <script>
@@ -111,37 +85,22 @@ export default {
         Signature: '',
         HeadIcon: '',
       },
-      loginRules: {
-        username: [{ required: true, trigger: 'blur' }],
-        password: [{ required: true, trigger: 'blur' }],
-      },
-      RegRules: {
-        UserName: [{ required: true, trigger: 'blur' }],
-        PassWord: [{ required: true, trigger: 'blur' }],
-        NickName: [{ required: true, trigger: 'blur' }],
-        Sex: [{ required: true, trigger: 'blur' }],
-        Age: [{ required: true, trigger: 'blur' }],
-        Signature: [{ required: true, trigger: 'blur' }],
-        HeadIcon: [{ required: true, trigger: 'blur' }],
-      },
       isReg: false,
     }
   },
   methods: {
     handleLogin() {
-      this.$refs.dataForm.validate((valid) => {
-        if (valid) {
-          Login(this.query).then((res) => {
-            console.log(res)
-            if (res.code === 0) {
-              sessionStorage.setItem('token', res.data.token)
-              this.$router.push('/admin')
-            } else {
-              this.$message(res.msg)
-            }
-          })
+      if (!this.query.UserName || !this.query.PassWord) {
+        this.$message.warning('请填写必填项')
+        return
+      }
+      Login(this.query).then((res) => {
+        console.log(res)
+        if (res.code === 0) {
+          sessionStorage.setItem('token', res.data.token)
+          this.$router.push('/admin')
         } else {
-          this.$message.warning('保存失败！请输入必填项')
+          this.$message(res.msg)
         }
       })
     },
@@ -150,12 +109,11 @@ export default {
         !this.regQuery.UserName ||
         !this.regQuery.PassWord ||
         !this.regQuery.NickName ||
-        !this.regQuery.Sex ||
         !this.regQuery.Age ||
         !this.regQuery.Signature ||
         !this.regQuery.HeadIcon
       ) {
-        this.$message('请填写必填项')
+        this.$message.warning('请填写必填项')
         return
       }
       Regist(this.regQuery).then((res) => {
@@ -195,59 +153,54 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.login {
+#root {
+  background: url('../../assets/img/bg.jpg') no-repeat;
+  width: 100%;
   height: 100%;
-  #root {
-    background: url('../../assets/img/bg.jpg') no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: calc(100% - 250px);
-    color: #fff;
-    text-align: center;
-    padding-top: 250px;
-    #stars {
-      margin: 0 auto;
-      max-width: 1600px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      /deep/ .star {
+  color: #fff;
+  overflow: hidden;
+  .btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    opacity: 0.5;
+  }
+  #stars {
+    margin: 0 auto;
+    max-width: 1600px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    /deep/ .star {
+      display: block;
+      width: 1px;
+      background: transparent;
+      position: relative;
+      opacity: 0;
+      /*过渡动画*/
+      animation: star-fall 6s linear infinite;
+      -webkit-animation: star-fall 6s linear infinite;
+      -moz-animation: star-fall 6s linear infinite;
+      &::after {
+        content: '';
         display: block;
-        width: 1px;
-        background: transparent;
-        position: relative;
-        opacity: 0;
-        /*过渡动画*/
-        animation: star-fall 6s linear infinite;
-        -webkit-animation: star-fall 6s linear infinite;
-        -moz-animation: star-fall 6s linear infinite;
-        &::after {
-          content: '';
-          display: block;
-          border: 0px solid #fff;
-          border-width: 0px 90px 2px 90px;
-          border-color: transparent transparent transparent
-            rgba(255, 255, 255, 0.5);
-          box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.1);
-          /*变形*/
-          transform: rotate(-45deg) translate3d(1px, 3px, 0);
-          -webkit-transform: rotate(-45deg) translate3d(1px, 3px, 0);
-          -moz-transform: rotate(-45deg) translate3d(1px, 3px, 0);
-          transform-origin: 0% 100%;
-          -webkit-transform-origin: 0% 100%;
-          -moz-transform-origin: 0% 100%;
-        }
+        border: 0px solid #fff;
+        border-width: 0px 90px 2px 90px;
+        border-color: transparent transparent transparent
+          rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.1);
+        /*变形*/
+        transform: rotate(-45deg) translate3d(1px, 3px, 0);
+        -webkit-transform: rotate(-45deg) translate3d(1px, 3px, 0);
+        -moz-transform: rotate(-45deg) translate3d(1px, 3px, 0);
+        transform-origin: 0% 100%;
+        -webkit-transform-origin: 0% 100%;
+        -moz-transform-origin: 0% 100%;
       }
-    }
-    .btn {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100px;
-      opacity: 0.5;
     }
   }
 }
