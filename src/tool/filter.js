@@ -109,7 +109,7 @@ export const parseObj = (strObj) => {
  * @param wait 延迟执行毫秒数
  * @param immediate true - 立即执行， false - 延迟执行
  */
-function debounce(func, wait, immediate) {
+export function debounce(func, wait, immediate) {
     let timer;
     return function () {
         let context = this,
@@ -129,7 +129,7 @@ function debounce(func, wait, immediate) {
     }
 }
 // 节流函数，wait - 时间戳
-function throttle(func, wait) {
+export function throttle(func, wait) {
     let previous = 0;
     return function () {
         let now = Date.now();

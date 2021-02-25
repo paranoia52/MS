@@ -11,11 +11,11 @@ export const admin = {
     {
       path: '/userm',
       meta: { title: '账号管理', icon: 'el-icon-user' },
-      component: () => import('@/views/admin/user/UserM.vue'),
       children: [
         {
           path: 'userList',
           meta: { title: '用户管理' },
+          component: () => import('@/views/admin/user/UserM.vue'),
         },
         {
           path: 'operateList',

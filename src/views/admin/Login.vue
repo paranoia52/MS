@@ -77,13 +77,13 @@ export default {
         PassWord: '',
       },
       regQuery: {
-        UserName: '',
-        PassWord: '',
-        NickName: '',
+        UserName: 'qz',
+        PassWord: 'qz123',
+        NickName: 'qz',
         Sex: 0,
         Age: 18,
-        Signature: '',
-        HeadIcon: '',
+        Signature: 'lihao',
+        HeadIcon: 'www.baidu.com',
       },
       isReg: false,
     }

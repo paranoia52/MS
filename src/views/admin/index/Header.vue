@@ -36,7 +36,8 @@ export default {
     }, 1000);
   },
   watch: {
-    $route: function () {
+    $route: function (value) {
+      console.log(value);
       this.levelList = [];
       for (let i of this.$route.matched) {
         this.levelList.push(i.meta.title);
