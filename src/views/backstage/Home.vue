@@ -1,5 +1,5 @@
 <template>
-  <div class="admin">
+  <div class="home">
     <el-container>
       <el-aside width="auto" class="sidebar">
         <Menu />
@@ -28,8 +28,8 @@
   </div>
 </template>
 <script>
-import Menu from "./Menu";
-import Header from "./Header";
+import Menu from "./components/Menu";
+import Header from "./components/Header";
 export default {
   components: {
     Menu,
@@ -84,7 +84,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-.admin {
+.home {
   // height: 100%;
   .el-header,
   .el-footer {

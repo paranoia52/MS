@@ -98,7 +98,7 @@ export default {
         console.log(res)
         if (res.code === 0) {
           sessionStorage.setItem('token', res.data.token)
-          this.$router.push('/admin')
+          this.$router.push('/home')
         } else {
           this.$message(res.msg)
         }

@@ -40,7 +40,7 @@ export default {
   },
   created() {
     router.options.routes.forEach((element) => {
-      if (element.path === '/admin') {
+      if (element.path === '/backstage') {
         this.menuList = element.children
       }
     })

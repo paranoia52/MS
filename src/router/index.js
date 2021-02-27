@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import { admin } from './admin'
+import { backstage } from './backstage'
 
 Vue.use(VueRouter)
 
@@ -11,41 +11,41 @@ const routes = [
   },
   {
     path: '/login',
-    component: () => import('@/views/admin/Login.vue'),
+    component: () => import('@/views/backstage/Login.vue'),
   },
   {
     path: '/index',
     meta: { title: "首页" },
-    component: () => import('@/views/stage/Index.vue'),
+    component: () => import('@/views/frontend/Index.vue'),
     children: [
       {
         path: '/essay',
         meta: { title: "随笔" },
-        component: () => import('@/views/stage/essay/Essay.vue')
+        component: () => import('@/views/frontend/essay/Essay.vue')
       },
       {
         path: '/music',
         meta: { title: "音乐" },
-        component: () => import('@/views/stage/music/Music.vue')
+        // component: () => import('@/views/frontend/music/Music.vue')
       },
       {
         path: '/wallpaper',
         meta: { title: "壁纸" },
-        component: () => import('@/views/stage/wallpaper/WallPaper.vue')
+        component: () => import('@/views/frontend/wallpaper/WallPaper.vue')
       },
       {
         path: '/book',
         meta: { title: "书籍" },
-        component: () => import('@/views/stage/book/Book.vue')
+        component: () => import('@/views/frontend/book/Book.vue')
       },
       {
         path: '/anime',
         meta: { title: "动画" },
-        component: () => import('@/views/stage/anime/Anime.vue')
+        component: () => import('@/views/frontend/anime/Anime.vue')
       },
     ]
   },
-  admin
+  backstage
 ]
 
 const router = new VueRouter({
