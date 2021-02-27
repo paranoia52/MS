@@ -1,0 +1,5 @@
+<template>
+  <div id="blank-page" style="height:100%;">
+    <router-view></router-view>
+  </div>
+</template>

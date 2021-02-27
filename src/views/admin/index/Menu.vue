@@ -3,7 +3,7 @@
     <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :unique-opened="true"
       background-color="#000033" text-color="#ddd" :collapse="isCollapse" active-text-color="#fff" router>
       <el-menu-item @click="changeCollapse">
-        <i :class="iconname"></i><span></span>
+        <i :class="foldIcon"></i><span></span>
       </el-menu-item>
       <template v-for="(item,index) in menuList">
         <!-- 有子目录的模块菜单 -->
@@ -29,11 +29,12 @@
 </template>
 <script>
 import router from '@/router/index'
+import UserMVue from '../user/UserM.vue'
 export default {
   data() {
     return {
       isCollapse: false,
-      iconname: 'el-icon-s-fold',
+      foldIcon: 'el-icon-s-fold',
       menuList: [], // 根据路由配置显示的菜单列表
     }
   },
@@ -49,13 +50,13 @@ export default {
     changeCollapse() {
       this.isCollapse = !this.isCollapse
       if (this.isCollapse) {
-        this.iconname = 'el-icon-s-unfold'
+        this.foldIcon = 'el-icon-s-unfold'
       } else {
-        this.iconname = 'el-icon-s-fold'
+        this.foldIcon = 'el-icon-s-fold'
       }
     },
     handleOpen(key, keyPath) {
-      console.log(key, keyPath)
+      console.log(key, keyPath)    
       // this.$router.push(key)
     },
     handleClose(key, keyPath) {
@@ -76,10 +77,10 @@ export default {
     width: 230px;
   }
   /deep/.el-submenu__title {
-    font-size: 16px !important;
+    font-size: 18px !important;
   }
   .el-menu-item {
-    font-size: 16px;
+    font-size: 18px;
   }
   .el-menu-item.is-active {
     background-color: #0066cc !important;
@@ -87,7 +88,7 @@ export default {
   .paddingR10 {
     color: #fff;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 </style>

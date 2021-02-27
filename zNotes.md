@@ -1,6 +1,6 @@
 <!-- 个人笔记 -->   
 # proto生成命令 node static.proto.js
-
+# 8位二进制为一个字节 ASCII码用7位表示 128个字符
 # 遇到的坑
   * 安卓手机中rem单位border-radius:50%画圆变形
       使用transform scale，先提前把px/rem相关的值放大一倍。
@@ -11,7 +11,8 @@
   * vant-tabs 绑定的active是Number 类型！
       this.active = Number(--)
   * vue 点击子元素不触发父元素事件  子元素事件用stop修饰符
-
+  * decodeURI转译 由于decodeURI转码时，通过%进行解析，如果字符串中存在% 报错Uncaught URIError: URI malformed
+      URI.indexOf('%') > -1 ? URI.replace(/%/g,'%25') : URI
 # CSS
   * 单行，添加省略号
       overflow: hidden;

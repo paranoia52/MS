@@ -1,16 +1,19 @@
+import Admin from "@/views/admin/index/Admin.vue"
+import BlankPage from "@/views/blankPage/BlankPage.vue"
 export const admin = {
   path: '/admin',
-  meta: { title: '柠檬后台' },
-  component: () => import('@/views/admin/index/Admin.vue'),
+  meta: { title: '' },
+  component: BlankPage,
   children: [
     {
       path: '/bookm',
       meta: { title: '首页', icon: 'el-icon-s-home' },
-      component: () => import('@/views/admin/book/BookM.vue'),
+      component: Admin,
     },
     {
       path: '/userm',
       meta: { title: '账号管理', icon: 'el-icon-user' },
+      component: Admin,
       children: [
         {
           path: 'userList',
@@ -20,6 +23,7 @@ export const admin = {
         {
           path: 'operateList',
           meta: { title: '运营管理' },
+          component: () => import('@/views/admin/book/BookM.vue'),
         },
         {
           path: 'chattingRecords',
@@ -45,23 +49,25 @@ export const admin = {
     },
     {
       path: '/musicm',
-      meta: { title: '社交管理', icon: 'el-icon-video-camera' },
-      component: () => import('@/views/admin/music/MusicM.vue'),
+      meta: { title: '社交管理', icon: 'el-icon-chat-line-square' },
+      component: Admin,
       children: [
         {
           path: 'socialSquare',
           meta: { title: '社交广场' },
+          component: () => import('@/views/admin/music/MusicM.vue'),
         },
       ]
     },
     {
       path: '/wallpaperm',
-      meta: { title: '商城管理', icon: 'el-icon-search' },
-      component: () => import('@/views/admin/wallpaper/WallpaperM.vue'),
+      meta: { title: '商城管理', icon: 'el-icon-shopping-cart-full' },
+      component: Admin,
       children: [
         {
           path: 'itemUpshelf',
           meta: { title: '上架商品' },
+          component: () => import('@/views/admin/wallpaper/WallpaperM.vue'),
         },
         {
           path: 'orderManage',
@@ -75,18 +81,20 @@ export const admin = {
     },
     {
       path: '/animem',
-      meta: { title: '数据记录', icon: 'el-icon-warning-outline' },
-      component: () => import('@/views/admin/anime/AnimeM.vue'),
+      meta: { title: '数据记录', icon: 'el-icon-tickets' },
+      component: Admin,
       children: [
         {
           path: 'cashLogs',
           meta: { title: '现金流水' },
+          component: () => import('@/views/admin/anime/AnimeM.vue'),
         },
       ]
     },
     {
       path: '/payment',
-      meta: { title: '支付管理', icon: 'el-icon-reading' },
+      meta: { title: '支付管理', icon: 'el-icon-sold-out' },
+      component: Admin,
       children: [
         {
           path: 'paymentSet',
@@ -104,7 +112,8 @@ export const admin = {
     },
     {
       path: '/action',
-      meta: { title: '功能管理', icon: 'el-icon-sell' },
+      meta: { title: '功能管理', icon: 'el-icon-s-operation' },
+      component: Admin,
       children: [
         {
           path: 'lemonTeam',
@@ -134,7 +143,8 @@ export const admin = {
     },
     {
       path: '/service',
-      meta: { title: '客服管理', icon: 'el-icon-present' },
+      meta: { title: '客服管理', icon: 'el-icon-service' },
+      component: Admin,
       children: [
         {
           path: 'serviceList',
@@ -156,7 +166,8 @@ export const admin = {
     },
     {
       path: '/countReport',
-      meta: { title: '统计报表', icon: 'el-icon-document' },
+      meta: { title: '统计报表', icon: 'el-icon-s-data' },
+      component: Admin,
       children: [
         {
           path: 'userAnalysis',
@@ -174,7 +185,8 @@ export const admin = {
     },
     {
       path: '/operate',
-      meta: { title: '运营渠道', icon: 'el-icon-document' },
+      meta: { title: '运营渠道', icon: 'el-icon-data-analysis' },
+      component: Admin,
       children: [
         {
           path: 'summarizing',
@@ -192,7 +204,8 @@ export const admin = {
     },
     {
       path: '/advertising',
-      meta: { title: '广告管理', icon: 'el-icon-document' },
+      meta: { title: '广告管理', icon: 'el-icon-truck' },
+      component: Admin,
       children: [
         {
           path: 'advertisingPutIn',
@@ -207,11 +220,12 @@ export const admin = {
     {
       path: '/system',
       meta: { title: '系统管理', icon: 'el-icon-setting' },
-      component: () => import('@/views/admin/role/Role.vue'),
+      component: Admin,
       children: [
         {
           path: 'AdminList',
           meta: { title: '管理员列表' },
+          component: () => import('@/views/admin/role/Role.vue'),
         },
         {
           path: 'AdminRecord',
@@ -229,8 +243,8 @@ export const admin = {
     },
     {
       path: '/eleSport',
-      meta: { title: '电竞管理', icon: 'el-icon-setting' },
-      component: () => import('@/views/admin/role/Role.vue'),
+      meta: { title: '电竞管理', icon: 'el-icon-data-analysis' },
+      component: Admin,
       children: [
         {
           path: 'eleChart',
