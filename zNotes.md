@@ -5,44 +5,71 @@
   * 安卓手机中rem单位border-radius:50%画圆变形
       使用transform scale，先提前把px/rem相关的值放大一倍。
       然后用transform scale(.5)缩小一倍，也就是我们想要的倍数。
+
   * 帧动画，在IOS中使用rem 出现位置不正确
       首次加载页面时IOS计算rem单位的时候有问题，切换组件隐藏显示再加载动画的时候能正常显示，
       是因为此时计算rem已经正确了。所以延迟加载首页动画，等页面计算好rem单位后再加载动画就不会出现显示问题了。
+
   * vant-tabs 绑定的active是Number 类型！
       this.active = Number(--)
+
   * vue 点击子元素不触发父元素事件  子元素事件用stop修饰符
+
   * decodeURI转译 由于decodeURI转码时，通过%进行解析，如果字符串中存在% 报错Uncaught URIError: URI malformed
       URI.indexOf('%') > -1 ? URI.replace(/%/g,'%25') : URI
+
+  * Element-UI中el-input无法输入 - 因为组件嵌套太深，导致无法组件无法刷新。
+      使用@input事件，在输入时进行强制刷新
+      <el-input v-model="input2" @input="onInput()" /> 　　
+      onInput(){
+        this.$forceUpdate();
+      }
+
 # CSS
   * 单行，添加省略号
       overflow: hidden;
       text-overflow:ellipsis;
       white-space: nowrap;
+
   * 多行省略号：
       display: -webkit-box;
       -webkit-box-orient: vertical;
       /*设置省略号在容器第四行文本后*/
       -webkit-line-clamp: 4; 
       overflow: hidden;
+
   * 抬头缩进
       text-indent: 2em;
+
   * 字间距
       text-indent：5px;
+
+  * 占位隐藏
+      visibility:hidden;
+  
+  * 元素缩小 位置居左
+      transform: scale(0.8);
+      transform-origin: left;
+      
   * 奇数偶数选择器
       div:nth-child(odd) {}
       div:nth-child(even) {}
+
   * 文字竖着排
       -webkit-writing-mode: vertical-rl; // 文字竖排
       writing-mode: vertical-rl;
+
   * IOS index无效
       z-index: 999; /*这里是给chrome用的*/
       transform: translateZ(1000px); /*这里是给safari用的*/
+
   * IOS，帧动画 使用rotate() deg单位不显示
     父元素添加以下代码
       transform: perspective(1000);
       -moz-transform: perspective(1000);
       -o-transform: perspective(1000);
       -webkit-transform: perspective(1000);
+
   * 浏览器禁止复制
     *{
       -webkit-touch-callout:none; /*系统默认菜单被禁用*/
@@ -63,6 +90,9 @@
 # JS
   * 字符串翻转
     Str = name.split('').reverse().join(''); 
+  
+  * 去除字符串的第一个字符
+    newStr = Str.slice(1)
 
   * 删除对象某一属性
     var obj = { name: 'zhagnsan', age: 19}     delete obj.name
@@ -124,12 +154,17 @@
       }
     }
 
-# vue计算属性，watch写法，防抖函数，url在data中书写
+# vue计算属性，watch写法，防抖函数，url在data中书写 store
   * computed: {
         sumData() {
-            return this.$store.state.quick.sumData || []
+          let sum = 0
+          this.goodsList.map((item) => {
+            this.checkList.indexOf(item.Id) != -1 ? (sum += item.Price * 0.8) : ''
+          })
+          return sum
         }
     },
+
   * watch: {
         '$store.state.user.userInfo': {
             handler: function(val) {
@@ -140,10 +175,22 @@
              immediate: true // 页面初始化执行一次
         }
     }
+
   * onLoad: debounce(function () {
         console.log('babala')
     }, 100),
+
   * imgurl: require('@/assets/img/head.png')
+
+  * filters: {
+      fil(val) {
+        return val.slice(0, 3) + '**' + val.slice(val.length - 4, val.length)
+      }
+    },
+
+  * store模块化调用方法
+    this.$store.commit('module/mutation', value)
+    console.log(this.$store.state.module.list)
 
 
 
