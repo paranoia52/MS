@@ -141,3 +141,49 @@ export function throttle(func, wait) {
         }
     }
 }
+// 获取日期
+// 当天开始日期（0点）
+export const showDayFirstDay = () => {
+    const beginTime = Date.parse(
+        new Date(new Date(new Date().toLocaleDateString()).getTime())
+    )
+    return beginTime
+}
+// 本周开始日期（0点）
+export const showWeekFirstDay = () => {
+    const nowTemp = new Date() // 当前时间
+    const oneDayLong = 24 * 60 * 60 * 1000 // 一天的毫秒数
+    // tslint:disable-next-line:variable-name
+    const c_time = nowTemp.getTime() // 当前时间的毫秒时间
+    // tslint:disable-next-line:variable-name
+    const c_day = nowTemp.getDay() || 7 // 当前时间的星期几
+    // tslint:disable-next-line:variable-name
+    const m_time = c_time - (c_day - 1) * oneDayLong // 当前周一的毫秒时间
+    const monday = new Date(m_time) // 设置周一时间对象
+    // tslint:disable-next-line:variable-name
+    const m_year = monday.getFullYear()
+    // tslint:disable-next-line:variable-name
+    const m_month = monday.getMonth() + 1
+    // tslint:disable-next-line:variable-name
+    const m_date = monday.getDate()
+    return Date.parse(m_year + '-' + m_month + '-' + m_date + ' ' + '00:00:00') // 周一的年月日
+}
+// 本月第一天（0点）
+export const showmothfristday = () => {
+    const data = new Date() // 本月
+    data.setDate(1)
+    data.setHours(0)
+    data.setSeconds(0)
+    data.setMinutes(0)
+    // return this.getNowFormatDate(data) + " " + "00:00:00";
+    return Date.parse(data)
+}
+// 本月最后一天（0点）
+export const showmothLastday = () => {
+    const date = new Date()
+    let currentMonth = date.getMonth()
+    const nextMonth = ++currentMonth
+    const nextMonthFirstDay = new Date(date.getFullYear(), nextMonth, 1)
+    const oneDay = 1000 * 60 * 60 * 24
+    return Date.parse(new Date(nextMonthFirstDay - oneDay))
+}
