@@ -2,27 +2,28 @@
   <div class="userm">
     <!-- 头部 -->
     <div class="header">
-      <div class="header-left">
-        <el-button type="primary" size="small" :disabled=" selectList.length ? false : true">
+      <div class="header-left">1
+        <Button :caption="'修改兴趣'" :disabled="selectList.length ? false : true" />
+        <Button :caption="'冻结'" :disabled="selectList.length ? false : true" />2
+        <el-button type="primary" icon="el-icon-edit-outline">
+          修改兴趣
+        </el-button>
+        <el-button type="primary" icon="el-icon-circle-close" :disabled="selectList.length ? false : true">
           冻结
         </el-button>
-        <el-button type="primary" size="small" :disabled=" selectList.length ? false : true">
+        <el-button type="primary" icon="el-icon-circle-check" :disabled="false">
           解冻
-        </el-button>
-        <el-button type="warning" size="small" :disabled="false">
-          清除青少年
         </el-button>
       </div>
       <div class="header-right">
         <el-button type="primary" size="small">重置</el-button>
         <span style="margin: 0 10px;font-size:14px;">搜索条件</span>
         <el-select v-model="query.KeyType" size="small" style="width:150px" placeholder="请选择">
-          <el-option v-for="item in options" :key="item.value" :label="item.label"
-            :value="item.value">
+          <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
           </el-option>
         </el-select>
-        <el-input v-model="query.Keyword" placeholder="请输入内容" size="small"
-          style="width:200px;margin: 0 10px;"></el-input>
+        <el-input v-model="query.Keyword" placeholder="请输入内容" size="small" style="width:200px;margin: 0 10px;">
+        </el-input>
         <el-button type="primary" size="small" @click="search">查询</el-button>
         <el-button type="primary" size="small">筛选</el-button>
       </div>
@@ -100,19 +101,22 @@
       </el-table-column>
     </el-table>
     <!-- 分页 -->
-    <el-pagination layout="prev, pager, next" :hide-on-single-page="true" :total="total"
-      :current-page="query.pageNo" @current-change="changPage">
+    <el-pagination layout="prev, pager, next" :hide-on-single-page="true" :total="total" :current-page="query.pageNo"
+      @current-change="changPage">
     </el-pagination>
     <!-- 修改用户数据弹窗 -->
     <SetUserInfo :visible="showUserInfo" :form.sync="UserInfo" @cancel="showUserInfo = false" />
   </div>
 </template>
 <script>
-import { GetUserList } from "@/http/api.js";
-import { formatTimeUTC } from "@/tool/filter";
-import SetUserInfo from "./child/SetUserInfo.vue";
+import { GetUserList } from '@/http/api.js'
+import { formatTimeUTC } from '@/tool/filter'
+
+import { Button } from '@/components/Form/Button.vue'
+import SetUserInfo from './child/SetUserInfo.vue'
 export default {
   components: {
+    Button,
     SetUserInfo,
   },
   data() {
@@ -120,20 +124,20 @@ export default {
       query: {
         pageNo: 1,
         KeyType: 0, // 0是全部  1是ID  2是昵称
-        Keyword: "",
+        Keyword: '',
       },
       options: [
         {
           value: 0,
-          label: "全部",
+          label: '全部',
         },
         {
           value: 1,
-          label: "ID",
+          label: 'ID',
         },
         {
           value: 2,
-          label: "昵称",
+          label: '昵称',
         },
       ],
       tableData: [], // 列表数据
@@ -143,45 +147,45 @@ export default {
       showUserInfo: false,
       UserInfo: {},
       total: 10,
-    };
+    }
   },
   methods: {
     formatTimeUTC,
     handleSelection(val) {
-      this.selectList = val;
+      this.selectList = val
     },
     // 用户详情
     toUserDetail(val) {
-      console.log(val);
+      console.log(val)
     },
     // 编辑用户信息
     operation(val) {
-      this.showUserInfo = true;
-      this.UserInfo = val;
+      this.showUserInfo = true
+      this.UserInfo = val
     },
     // 条件查询
     search() {
-      this.query.pageNo = 1;
-      this.inquire();
+      this.query.pageNo = 1
+      this.inquire()
     },
     changPage(val) {
-      this.query.pageNo = val;
-      this.inquire();
+      this.query.pageNo = val
+      this.inquire()
     },
     // 获取数据
     inquire() {
       GetUserList(this.query).then((res) => {
-        console.log(res);
-        this.tableData = res.data.data;
-        this.total = res.data.total;
-        this.query.pageNo = res.data.pageNo;
-      });
+        console.log(res)
+        this.tableData = res.data.data
+        this.total = res.data.total
+        this.query.pageNo = res.data.pageNo
+      })
     },
   },
   mounted() {
-    this.inquire();
+    this.inquire()
   },
-};
+}
 </script>
 <style lang="less" scoped>
 .userm {
