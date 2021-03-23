@@ -2,41 +2,41 @@
   <!-- 3D盒子 -->
   <div class="stereo-box">
     <span id="in-front">
-      <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
+      <img src="@/assets/img/head.jpg" class="in-img" alt="">
     </span>
     <span id="in-back">
-      <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
+      <img src="@/assets/img/head.jpg" class="in-img" alt="">
     </span>
     <span id="in-left">
-      <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
+      <img src="@/assets/img/head.jpg" class="in-img" alt="">
     </span>
     <span id="in-right">
-      <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
+      <img src="@/assets/img/head.jpg" class="in-img" alt="">
     </span>
     <span id="in-top">
-      <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
+      <img src="@/assets/img/head.jpg" class="in-img" alt="">
     </span>
     <span id="in-bottom">
-      <img src="@/assets/img/3d/2.jpg" class="in-img" alt="">
+      <img src="@/assets/img/head.jpg" class="in-img" alt="">
     </span>
     <!-- 外层图片 -->
     <div class="out-front">
-      <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
+      <img src="@/assets/img/head.jpg" class="out-img" alt="">
     </div>
     <div class="out-back">
-      <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
+      <img src="@/assets/img/head.jpg" class="out-img" alt="">
     </div>
     <div class="out-left">
-      <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
+      <img src="@/assets/img/head.jpg" class="out-img" alt="">
     </div>
     <div class="out-right">
-      <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
+      <img src="@/assets/img/head.jpg" class="out-img" alt="">
     </div>
     <div class="out-top">
-      <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
+      <img src="@/assets/img/head.jpg" class="out-img" alt="">
     </div>
     <div class="out-bottom">
-      <img src="@/assets/img/3d/2.jpg" class="out-img" alt="">
+      <img src="@/assets/img/head.jpg" class="out-img" alt="">
     </div>
   </div>
 </template>

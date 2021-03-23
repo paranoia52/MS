@@ -154,6 +154,70 @@
       }
     }
 
+  * 原生ajax封装
+    function ajax(obj) {
+      var xhr
+      if (window.XMLHttpRequest) { // IE7以上浏览器
+        xhr = new XMLHttpRequest()
+      } else {
+        xhr = new ActiveXObject("Microsoft.XMLHTTP") // 只有IE6支持此对象
+      }
+
+      xhr.open(obj.type, obj.url, obj.async)
+
+      // 除了登陆，其他接口需要加上token
+      if (obj.url.indexOf('login') === -1 && sessionStorage.getItem('token')) {
+        xhr.setRequestHeader("token", sessionStorage.getItem('token'))
+      }
+
+      if (obj.type.toLowerCase() == "get") {
+        xhr.send()
+      } else if (obj.type.toLowerCase() == "post") {
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8")
+        xhr.send(JSON.stringify(obj.data))
+      }
+
+      // 操作返回的数据
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          //1.readyState属性:ajax工作状态
+          //2.每当readyState的值发生改变时,就会触发         onreadystatechange事件
+          //存有XMLHttpRequest的状态.从0-4发生变化
+          //0:请求未初始化
+          //1:服务器连接已建立
+          //2:请求已接收
+          //3:请求处理中
+          //4:请求已完成,且响应已就绪
+
+          //http状态码
+          //200代表请求成功
+          //403禁止访问
+          //404文件未找到
+          //500服务器错误
+          //对responseText进行json转化
+          var data = JSON.parse(xhr.responseText)
+          obj.success(data)
+        }
+      }
+    }
+
+    function login() {
+      ajax({
+        type: 'post',
+        url: 'http://127.0.0.1:3000/users/login',
+        data: {
+          UserName: "admin",
+          PassWord: "admin"
+        },
+        async: true,
+        success: function (res) {
+          console.log(res);
+          sessionStorage.setItem('token', res.data.token)
+        }
+      })
+    }
+
+
 # vue计算属性，watch写法，防抖函数，url在data中书写 store
   * computed: {
         sumData() {
@@ -193,6 +257,33 @@
     console.log(this.$store.state.module.list)
 
 
+
+
+
+
+
+
+
+
+# github 无法访问  host添加
+  # GitHub Start 
+  140.82.114.4 github.com
+  140.82.114.4 gist.github.com
+  185.199.108.153 assets-cdn.github.com
+  151.101.64.133 raw.githubusercontent.com
+  151.101.108.133 gist.githubusercontent.com
+  151.101.108.133 cloud.githubusercontent.com
+  151.101.108.133 camo.githubusercontent.com
+  151.101.108.133 avatars0.githubusercontent.com
+  151.101.108.133 avatars1.githubusercontent.com
+  151.101.108.133 avatars2.githubusercontent.com
+  151.101.108.133 avatars3.githubusercontent.com
+  151.101.108.133 avatars4.githubusercontent.com
+  151.101.108.133 avatars5.githubusercontent.com
+  151.101.108.133 avatars6.githubusercontent.com
+  151.101.108.133 avatars7.githubusercontent.com
+  151.101.108.133 avatars8.githubusercontent.com 
+  # GitHub End
 
 
 # vscode setting.json

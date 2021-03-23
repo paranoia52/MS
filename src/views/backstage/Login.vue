@@ -12,12 +12,7 @@
           <el-input prefix-icon="el-icon-user" placeholder="账号" v-model="query.UserName" />
         </el-form-item>
         <el-form-item>
-          <el-input
-            prefix-icon="el-icon-lock"
-            placeholder="密码"
-            type="password"
-            v-model="query.PassWord"
-          ></el-input>
+          <el-input prefix-icon="el-icon-lock" placeholder="密码" type="password" v-model="query.PassWord"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" style="width:100%;" @click.native.prevent="handleLogin">登录</el-button>
@@ -50,12 +45,8 @@
           </el-radio-group>
         </el-form-item>
         <el-form-item label="头像：">
-          <el-upload
-            class="avatar-uploader"
-            action="http://127.0.0.1:3000/upload"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-          >
+          <el-upload class="avatar-uploader" action="http://127.0.0.1:3000/upload" :show-file-list="false"
+            :on-success="handleAvatarSuccess">
             <i class="el-icon-plus avatar-uploader-icon"></i>
           </el-upload>
         </el-form-item>
@@ -78,11 +69,11 @@ export default {
       },
       regQuery: {
         UserName: 'qz',
-        PassWord: 'qz123',
-        NickName: 'qz',
-        Sex: 0,
+        PassWord: '',
+        NickName: '红烛自怜无好计',
+        Sex: 1,
         Age: 18,
-        Signature: 'lihao',
+        Signature: 'cool',
         HeadIcon: 'www.baidu.com',
       },
       isReg: false,
@@ -154,7 +145,7 @@ export default {
 
 <style lang="less" scoped>
 #root {
-  background: url('../../assets/img/bg.jpg') no-repeat;
+  background: url('../../assets/img/bg2.jpg') no-repeat;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -173,8 +164,8 @@ export default {
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    z-index: -1;
+    // bottom: 0;
+    z-index: 1;
     /deep/ .star {
       display: block;
       width: 1px;

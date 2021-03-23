@@ -2,18 +2,10 @@
   <div class="userm">
     <!-- 头部 -->
     <div class="header">
-      <div class="header-left">1
-        <Button :caption="'修改兴趣'" :disabled="selectList.length ? false : true" />
-        <Button :caption="'冻结'" :disabled="selectList.length ? false : true" />2
-        <el-button type="primary" icon="el-icon-edit-outline">
-          修改兴趣
-        </el-button>
-        <el-button type="primary" icon="el-icon-circle-close" :disabled="selectList.length ? false : true">
-          冻结
-        </el-button>
-        <el-button type="primary" icon="el-icon-circle-check" :disabled="false">
-          解冻
-        </el-button>
+      <div class="header-left">
+        <Button :icon="'el-icon-edit-outline'" :disabled="selectList.length==0" :capion="'修改兴趣'" />
+        <Button :icon="'el-icon-circle-close'" :disabled="selectList.length==0" :capion="'冻结'" />
+        <Button :icon="'el-icon-circle-check'" :disabled="selectList.length==0" :capion="'解冻'" />
       </div>
       <div class="header-right">
         <el-button type="primary" size="small">重置</el-button>
@@ -24,76 +16,75 @@
         </el-select>
         <el-input v-model="query.Keyword" placeholder="请输入内容" size="small" style="width:200px;margin: 0 10px;">
         </el-input>
-        <el-button type="primary" size="small" @click="search">查询</el-button>
-        <el-button type="primary" size="small">筛选</el-button>
+        <Button :icon="'el-icon-search'" @click="search" :capion="'查询'" />
+        <Button :inIcon="'el-icon-d-arrow-right'" :capion="'更多'" />
       </div>
     </div>
     <!-- 表格 -->
-    <el-table :data="tableData" border size="small" ref="multipleTable" v-loading="loading"
-      @selection-change="handleSelection" style="width: 100%">
+    <el-table :data="tableData" border size="small" ref="multipleTable" v-loading="loading" @selection-change="handleSelection"
+      style="width: 100%">
       <el-table-column type="selection" width="55"></el-table-column>
-      <el-table-column align="center" prop="UserId" label="ID">
+      <el-table-column align="center" prop="UserId" label="柠檬号">
         <template slot-scope="scope">
           <el-link type="primary" :underline="false" @click="toUserDetail">
-            {{ '325711' + scope.row.id }}</el-link>
+            {{ 'Im708' + scope.row.id + 'bb45' }}</el-link>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="PrettyUserId" label="稀有ID">
-        <template slot-scope="scope">
-          <span>{{ scope.row.PrettyUserId || '-' }}</span>
-        </template>
+      <el-table-column align="center" prop="NickName" label="用户昵称">
       </el-table-column>
-      <el-table-column align="center" prop="NickName" label="会员昵称">
+      <el-table-column align="center" prop="NickName" label="手机号码">
       </el-table-column>
-      <el-table-column align="center" prop="HeadIcon" label="头像">
+      <el-table-column align="center" prop="HeadIcon" label="性别">
         <template slot-scope="scope">
           <img v-if="scope.row.HeadIcon" style="width:60px;" :src="scope.row.HeadIcon" alt="">
-          <img v-else style="width:60px;" src="@/assets/img/touxiang.png" alt="">
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="Phone" label="手机号码">
+      <el-table-column align="center" prop="Phone" label="渠道">
       </el-table-column>
-      <el-table-column align="center" prop="RegisterType" label="注册方式">
+      <el-table-column align="center" prop="RegisterType" label="类型">
         <template slot-scope="scope">
           <span v-if="!scope.row.RegisterType">手机注册</span>
           <span v-else>-</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="UserType" label="用户类型">
+      <el-table-column align="center" prop="UserType" label="标签">
         <template slot-scope="scope">
           <span v-if="!scope.row.UserType == 1">主播</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="IsSuperManage" label="权限">
+      <el-table-column align="center" prop="IsSuperManage" label="抓取词">
         <template slot-scope="scope">
           <span v-if="scope.row.IsSuperManage">超管</span>
           <span v-else>-</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="IsSuperManage" label="青少年">
+      <el-table-column align="center" prop="IsSuperManage" label="收款URL">
         <template slot-scope="scope">
           <span v-if="scope.row.IsYouthModel">开启</span>
           <span v-else>关闭</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="CreateTime" label="注册时间">
+      <el-table-column align="center" prop="CreateTime" label="手机品牌">
         <template slot-scope="scope">
           {{ formatTimeUTC(scope.row.CreateTime) }}
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="IsOnline" label="在线状态">
+      <el-table-column align="center" prop="IsOnline" label="注册时间">
         <template slot-scope="scope">
           <span v-if="scope.row.IsOnline">在线</span>
           <span v-else>离线</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="Status" label="账号状态">
+      <el-table-column align="center" prop="Status" label="实名验证时间">
         <template slot-scope="scope">
           <span v-if="!scope.row.Status">正常</span>
           <span v-else>-</span>
         </template>
       </el-table-column>
-      <el-table-column align="center" prop="Signature" label="个性签名"></el-table-column>
+      <el-table-column align="center" prop="Signature" label="状态"></el-table-column>
+      <el-table-column align="center" prop="Signature" label="自定义标签"></el-table-column>
+      <el-table-column align="center" prop="Signature" label="账号状态"></el-table-column>
+      <el-table-column align="center" prop="Signature" label="备注"></el-table-column>
       <el-table-column align="center" prop="Note" label="操作">
         <template slot-scope="scope">
           <el-link type="primary" :underline="false" @click="operation(scope.row)">修改</el-link>
@@ -112,7 +103,7 @@
 import { GetUserList } from '@/http/api.js'
 import { formatTimeUTC } from '@/tool/filter'
 
-import { Button } from '@/components/Form/Button.vue'
+import Button from '@/components/Form/Button.vue'
 import SetUserInfo from './child/SetUserInfo.vue'
 export default {
   components: {

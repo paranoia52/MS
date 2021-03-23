@@ -7,7 +7,6 @@
     <Album v-else-if="curIndex==1" />
     <DoubleHelix v-else-if="curIndex==2" />
     <Graph v-else-if="curIndex==3" />
-    <SmashEgg v-else-if="curIndex==4" />
   </div>
 </template>
 <script>
@@ -15,19 +14,17 @@ import Stereo from "./child/Stereo";
 import Album from "./child/3DAlbum";
 import DoubleHelix from "./child/DoubleHelix";
 import Graph from "./child/Graph";
-import SmashEgg from "./child/smashegg/SmashEgg";
 export default {
   components: {
     Stereo,
     Album,
     DoubleHelix,
     Graph,
-    SmashEgg,
   },
   data() {
     return {
-      menu: ["3D立方体", "3D相册", "双螺旋", "各种图形", "H5砸蛋"],
-      curIndex: 4,
+      menu: ["3D立方体", "3D相册", "双螺旋", "各种图形"],
+      curIndex: 0,
     };
   },
 };

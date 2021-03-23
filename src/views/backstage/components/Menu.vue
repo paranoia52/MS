@@ -29,7 +29,6 @@
 </template>
 <script>
 import router from '@/router/index'
-import UserMVue from '../user/UserM.vue'
 export default {
   data() {
     return {
