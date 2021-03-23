@@ -1,6 +1,7 @@
 <!-- 个人笔记 -->   
 # proto生成命令 node static.proto.js
 # 8位二进制为一个字节 ASCII码用7位表示 128个字符
+# 插件 shadow reader
 # 遇到的坑
   * 安卓手机中rem单位border-radius:50%画圆变形
       使用transform scale，先提前把px/rem相关的值放大一倍。
@@ -28,6 +29,8 @@
     每次切换到x页面后，body的style总会被写入一个 [oveflow:hidden], 并且只在生产环境下，才会有这个情况。
     问题出在 el-image组件每次点击都会调用这个函数，该函数就会更改body的属性
     知道问题在哪，解决就简单了，重新覆盖下body属性即可。
+  
+  * Elementui 用了合并行 表格不能固定高度（会有合并行不显示的bug）
 
 # CSS
   * 单行，添加省略号
@@ -254,5 +257,11 @@
   },
   "python.jediEnabled": false,
   "terminal.integrated.automationShell.windows": "C:\\Windows\\sysnative\\cmd.exe",
-  "editor.fontLigatures": null
+  "editor.fontLigatures": null,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#1E1E1E", // 状态栏bg
+    "statusBar.foreground": "#999999", // 状态栏文字color
+    "statusBar.noFolderBackground": "#0A0A0D",
+    "statusBar.debuggingBackground": "#511f1f"
+  }
 }
