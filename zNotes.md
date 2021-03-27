@@ -32,6 +32,13 @@
   
   * Elementui 用了合并行 表格不能固定高度（会有合并行不显示的bug）
 
+  * inline-block元素可以将对象呈递为内联对象，但是对象的内容作为块对象呈递。但有一点需要注意的是对象仍然呈递为
+    内联元素，而同一行内的内联元素默认是基于 baseline 对齐的
+    解决方法
+      1、暴力float，当然这是备选方案，毕竟脱离文档流后页面元素会不好控制
+      2、简单粗暴地给所有元素都加上内容，例如空格符
+      3、设置所有内联元素 vertical-align: top/middle/bottom; 属性，改变默认设置
+
 # CSS
   * 单行，添加省略号
       overflow: hidden;
@@ -199,6 +206,10 @@
     this.$store.commit('module/mutation', value)
     console.log(this.$store.state.module.list)
 
+  * 父组件调用子组件方法
+    this.$nextTick(() => {
+      this.$refs.child.initData()
+    })
 
 
 
