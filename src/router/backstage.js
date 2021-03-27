@@ -18,7 +18,7 @@ export const backstage = {
         {
           path: 'userList',
           meta: { title: '用户管理' },
-          component: () => import('@/views/backstage/user/UserM.vue'),
+          component: () => import('@/views/backstage/user/index.vue'),
         },
         {
           path: 'operateList',

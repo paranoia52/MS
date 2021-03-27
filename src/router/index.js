@@ -26,12 +26,12 @@ const routes = [
       {
         path: '/music',
         meta: { title: "音乐" },
-        // component: () => import('@/views/frontend/music/Music.vue')
+        component: () => import('@/views/frontend/music/index.vue')
       },
       {
         path: '/wallpaper',
         meta: { title: "壁纸" },
-        component: () => import('@/views/frontend/wallpaper/WallPaper.vue')
+        component: () => import('@/views/frontend/wallpaper/index.vue')
       },
       {
         path: '/book',
@@ -60,16 +60,16 @@ VueRouter.prototype.push = function push (location) {
   return originalPush.call(this, location).catch(err => err)
 }
 
-// router.beforeEach((to, from, next) => { // beforeEach是router的钩子函数，在进入路由前执行
-//   if (to.meta.title) {
-//     document.title = to.meta.title
-//   }
-//   if (to.matched[0].path == '/admin' && !sessionStorage.getItem('token')) {
-//     next({ path: '/login' })
-//     alert('请先登陆')
-//   } else {
-//     next()
-//   }
-// })
+router.beforeEach((to, from, next) => { // beforeEach是router的钩子函数，在进入路由前执行
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+  if (to.matched[0].path == '/backstage' && !sessionStorage.getItem('token')) {
+    next({ path: '/login' })
+    alert('请先登陆')
+  } else {
+    next()
+  }
+})
 
 export default router

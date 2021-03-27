@@ -7,7 +7,7 @@
             <el-form-item label="用户头像:" label-width="100px">
               <el-row style="display:flex;justify-content: space-between;">
                 <div style="width: 50px;height: 50px;">
-                  <img class="buddha" :src="form.HeadIcon || require('@/assets/img/touxiang.png')"
+                  <img class="buddha" :src="form.HeadIcon"
                     alt="">
                 </div>
                 <el-upload class="avatar-uploader" action="http://127.0.0.1:3000/upload"

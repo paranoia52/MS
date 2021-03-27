@@ -2,23 +2,23 @@
   <!-- 3D相册效果 -->
   <div class="album">
     <div id="rotephoto">
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
-      <figure><img src="@/assets/img/3d/1.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
+      <figure><img src="@/assets/img/bg2.jpg" alt=""></figure>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style lang="less" scoped>
 // 3D相册

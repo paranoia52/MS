@@ -1,79 +1,61 @@
 <template>
   <div class="graph">
     <!-- 等腰三角形 -->
-    <div style="border-left: 30px solid transparent;border-right: 30px solid transparent;
-    border-bottom: 60px solid rgb(77,134,141);" />
+    <div class="DYSJX" />
     <!-- 直角三角形 -->
-    <div style="border-left: 30px solid #E3B444;border-bottom: 60px solid transparent;" />
+    <div class="ZJSJX" />
     <!-- 等腰直角三角形 -->
-    <div style="border-right: 60px solid #59471B;border-bottom: 60px solid transparent;" />
+    <div class="DYZJSJX" />
     <!-- 平行四边形 -->
-    <div style="height:50px;width:100px;background:#ff8c00;transform: skew(20deg);" />
+    <div class="PXSBX" />
     <!-- 菱形 -->
-    <div style="border: 25px solid transparent;border-bottom: 35px solid #ff8c00;
-    position: relative;top:-25px;" class="lingxing" />
+    <div class="lingxing" />
     <!-- 梯形 -->
-    <div style=" width:50px;border-bottom: 75px solid red;border-left: 25px solid transparent;
-    border-right: 25px solid transparent;" />
+    <div class="tixing" />
     <!-- 红叉 -->
-    <div style="position: relative;width: 80px;height: 10px;background-color: #f00;top:20px;
-    transform: rotate(45deg);border-radius: 50%;" class="hongcha" />
+    <div class="hongcha" />
     <!-- 半圆 -->
-    <div style="width: 100px;height: 50px;background: #8A2BE2;border-radius: 50px 50px 0 0;" />
+    <div class="banyuan" />
     <!-- 1/4⚪ -->
-    <div style="width: 50px;height: 50px;background: #8A2BE2;border-radius: 50px 0 0 0;" />
+    <div class="yuan1-4" />
     <!-- 3/4⚪ -->
-    <div style="border-right: 30px solid transparent;border-top: 30px solid red;
-    border-left: 30px solid red;border-bottom: 30px solid red;border-radius: 50%;" />
+    <div class="yuan3-4" />
     <!-- 鸡蛋 -->
-    <div style="width: 126px;height: 180px;background-color:#FFEFD5;
-     border-radius: 50%  50%  50%  50%  / 60%   60%   40%  40%;" />
+    <div class="egg" />
     <!-- 圆环 -->
-    <div style="width: 100px;height: 100px;border: 15px solid red;position: relative;border-radius: 50%;" />
+    <div class="yuanhuan" />
     <!-- 放大镜 -->
-    <div style="width: 64px;height: 64px;border: 10px solid black;position: relative;
-    border-radius: 50%;" class="fangdajing" />
+    <div class="fangdajing" />
     <!-- 四色圆环 -->
-    <div style="width: 100px;height: 100px;border: 15px solid white;position: relative;
-    border-radius: 50%;border-top: 15px solid red;border-left: 15px solid orange;
-    border-bottom: 15px solid green;border-right: 15px solid blue;" />
+    <div class="yuanhuan4" />
     <!-- 牛角 扇叶 不规则圆环 -->
-    <div style="width: 120px;height: 120px;border-left: 60px solid green;
-    border-right: 60px solid blue;border-top: 60px solid red;border-radius: 50%;" />
+    <div class="buguizeyuanhuan" />
     <!-- 圆锥 -->
-    <div style="  border-left: 60px solid transparent;border-right: 60px solid transparent;
-    border-top: 120px solid red;border-radius: 50%;" />
+    <div class="yuanzhui" />
     <!-- 五边形 -->
-    <div style="position: relative;width: 54px;border-top: 50px solid red;top:50px;
-    border-left: 18px solid transparent;border-right: 18px solid transparent;" class="wubianxing" />
+    <div class="wubianxing" />
     <!-- 六边形 -->
-    <div style="width: 138.5px;height: 80px;background: red;position: relative;top:40px;" class="liubianxing" />
+    <div class="liubianxing" />
     <!-- 五角星 -->
-    <div style=" position: relative;display: block;border-left:  100px solid transparent;
-    border-right: 100px solid transparent;border-bottom:70px  solid red;
-    transform:rotate(35deg);" class="wujiaoxing" />
+    <div class="wujiaoxing" />
     <!-- 枫叶 -->
-    <div style="border-left: 50px solid transparent;border-right: 50px solid transparent;
-    border-bottom: 100px solid red;position: relative;" class="fengye" />
+    <div class="fengye" />
     <!-- 12角星 -->
-    <div style="background: red;width: 150px;height: 150px;position: relative;" class="jiaoxing12" />
+    <div class="jiaoxing12" />
     <!-- 爱心 -->
-    <div style="position: relative;width: 100px;height: 90px;" class="aixin" />
+    <div class="aixin" />
     <!-- 钻石 -->
-    <div style="   border-style: solid;border-color: transparent transparent #4e1919 transparent;
-    border-width: 0 25px 25px 25px;height: 0;width: 50px;position: relative;" class="zuanshi" />
+    <div class="zuanshi" />
     <!-- 向下箭头 -->
-    <div style=" width: 0;color: #f00;border: 15px solid transparent;border-top: 25px solid;
-      box-shadow: 0 -32px 0 -6px;" />
+    <div class="downJT" />
     <!-- 五杠 -->
-    <div style=" width: 40px; height: 0; color: red;
-    box-shadow: 20px 20px 0 3px ,20px 0 0 3px ,20px 40px 0 3px, 20px 10px 0 3px ,20px 30px 0 3px;" />
+    <div class="wugang" />
     <!-- 月亮 -->
-    <div style="  width: 80px;height: 80px;border-radius: 50%;box-shadow: 15px 15px 0 0 red;" />
+    <div />
   </div>
 </template>
 <script>
-export default {};
+export default {}
 </script>
 <style lang="less" scoped>
 .graph {
@@ -84,9 +66,32 @@ export default {};
     width: 0;
     height: 0;
   }
+  .DYSJX {
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 60px solid rgb(77, 134, 141);
+  }
+  .ZJSJX {
+    border-left: 30px solid #e3b444;
+    border-bottom: 60px solid transparent;
+  }
+  .DYZJSJX {
+    border-right: 60px solid #59471b;
+    border-bottom: 60px solid transparent;
+  }
+  .PXSBX {
+    height: 50px;
+    width: 100px;
+    background: #ff8c00;
+    transform: skew(20deg);
+  }
   .lingxing {
+    border: 25px solid transparent;
+    border-bottom: 35px solid #ff8c00;
+    position: relative;
+    top: -25px;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 35px;
       left: -25px;
@@ -96,9 +101,22 @@ export default {};
       border-top: 35px solid #ff8c00;
     }
   }
+  .tixing {
+    width: 50px;
+    border-bottom: 75px solid red;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+  }
   .hongcha {
+    position: relative;
+    width: 80px;
+    height: 10px;
+    background-color: #f00;
+    top: 20px;
+    transform: rotate(45deg);
+    border-radius: 50%;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 0px;
       width: 80px;
@@ -108,9 +126,80 @@ export default {};
       border-radius: 50%;
     }
   }
+  .banyuan {
+    width: 100px;
+    height: 50px;
+    background: #8a2be2;
+    border-radius: 50px 50px 0 0;
+  }
+  .yuan1-4 {
+    width: 50px;
+    height: 50px;
+    background: #8a2be2;
+    border-radius: 50px 0 0 0;
+  }
+  .yuan3-4 {
+    border-right: 30px solid transparent;
+    border-top: 30px solid red;
+    border-left: 30px solid red;
+    border-bottom: 30px solid red;
+    border-radius: 50%;
+  }
+  .egg {
+    width: 126px;
+    height: 180px;
+    background-color: #ffefd5;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  }
+  .yuanhuan {
+    width: 100px;
+    height: 100px;
+    border: 15px solid red;
+    position: relative;
+    border-radius: 50%;
+  }
+  .yuanhuan4 {
+    width: 100px;
+    height: 100px;
+    border: 15px solid white;
+    position: relative;
+    border-radius: 50%;
+    border-top: 15px solid red;
+    border-left: 15px solid orange;
+    border-bottom: 15px solid green;
+    border-right: 15px solid blue;
+    width: 100px;
+    height: 100px;
+    border: 15px solid white;
+    position: relative;
+    border-radius: 50%;
+    border-top: 15px solid red;
+    border-left: 15px solid orange;
+    border-bottom: 15px solid green;
+    border-right: 15px solid blue;
+  }
+  .buguizeyuanhuan {
+    width: 120px;
+    height: 120px;
+    border-left: 60px solid green;
+    border-right: 60px solid blue;
+    border-top: 60px solid red;
+    border-radius: 50%;
+  }
+  .yuanzhui {
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-top: 120px solid red;
+    border-radius: 50%;
+  }
   .fangdajing {
+    width: 64px;
+    height: 64px;
+    border: 10px solid black;
+    position: relative;
+    border-radius: 50%;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       right: -40px;
       bottom: -16px;
@@ -122,8 +211,14 @@ export default {};
     }
   }
   .wubianxing {
+    position: relative;
+    width: 54px;
+    border-top: 50px solid red;
+    top: 50px;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       height: 0;
       width: 0;
@@ -135,8 +230,13 @@ export default {};
     }
   }
   .liubianxing {
+    width: 138.5px;
+    height: 80px;
+    background: red;
+    position: relative;
+    top: 40px;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -40px;
       left: 0;
@@ -147,7 +247,7 @@ export default {};
       border-bottom: 40px solid red;
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -40px;
       left: 0;
@@ -159,8 +259,14 @@ export default {};
     }
   }
   .wujiaoxing {
+    position: relative;
+    display: block;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 70px solid red;
+    transform: rotate(35deg);
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       width: 0px;
       height: 0px;
@@ -172,7 +278,7 @@ export default {};
       transform: rotate(-35deg);
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 0px;
       height: 0px;
@@ -185,8 +291,12 @@ export default {};
     }
   }
   .fengye {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid red;
+    position: relative;
     &::after {
-      content: "";
+      content: '';
       width: 0;
       height: 0;
       border-left: 50px solid transparent;
@@ -198,8 +308,12 @@ export default {};
     }
   }
   .jiaoxing12 {
+    background: red;
+    width: 150px;
+    height: 150px;
+    position: relative;
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -209,7 +323,7 @@ export default {};
       transform: rotate(30deg);
     }
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
@@ -220,9 +334,12 @@ export default {};
     }
   }
   .aixin {
+    position: relative;
+    width: 100px;
+    height: 90px;
     &::before {
       position: absolute;
-      content: "";
+      content: '';
       left: 50px;
       top: 0;
       width: 50px;
@@ -234,7 +351,7 @@ export default {};
     }
     &::after {
       position: absolute;
-      content: "";
+      content: '';
       left: 0;
       top: 0;
       width: 50px;
@@ -246,8 +363,14 @@ export default {};
     }
   }
   .zuanshi {
+    border-style: solid;
+    border-color: transparent transparent #4e1919 transparent;
+    border-width: 0 25px 25px 25px;
+    height: 0;
+    width: 50px;
+    position: relative;
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 25px;
       left: -25px;
@@ -257,6 +380,26 @@ export default {};
       border-color: #4e1919 transparent transparent transparent;
       border-width: 70px 50px 0 50px;
     }
+  }
+  .downJTv {
+    width: 0;
+    color: #f00;
+    border: 15px solid transparent;
+    border-top: 25px solid;
+    box-shadow: 0 -32px 0 -6px;
+  }
+  .wugang {
+    width: 40px;
+    height: 0;
+    color: red;
+    box-shadow: 20px 20px 0 3px, 20px 0 0 3px, 20px 40px 0 3px, 20px 10px 0 3px,
+      20px 30px 0 3px;
+  }
+  .moon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    box-shadow: 15px 15px 0 0 red;
   }
 }
 </style>

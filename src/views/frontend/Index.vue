@@ -11,10 +11,6 @@
     <div class="main">
       <router-view></router-view>
     </div>
-    <!-- 底部 -->
-    <div style="font-size:12px;padding:8px 0;height:20px">
-      <div>Copyright © 2020</div>
-    </div>
   </div>
 </template>
 
@@ -33,7 +29,6 @@ export default {
         this.menuList = element.children;
       }
     });
-    console.log(this.menuList);
   },
 };
 </script>
@@ -41,8 +36,7 @@ export default {
 .index {
   .navbar {
     height: 44px;
-    // background-color: rgb(247, 241, 241);
-    background: linear-gradient(90deg, #000 0, #f1bf48 40%, #066dab);
+    background: #fff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
     ul {
       width: 80%;
@@ -55,7 +49,7 @@ export default {
         cursor: pointer;
       }
       .active {
-        color: #EEE;
+        color: #ccc;
         font-size: 18px;
       }
     }
