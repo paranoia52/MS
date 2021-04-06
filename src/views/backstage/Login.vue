@@ -145,7 +145,7 @@ export default {
 
 <style lang="less" scoped>
 #root {
-  background: url('../../assets/img/bg2.jpg') no-repeat;
+  background: url('../../assets/img/bg.jpg') no-repeat;
   width: 100%;
   height: 100%;
   color: #fff;

@@ -30,7 +30,7 @@
     问题出在 el-image组件每次点击都会调用这个函数，该函数就会更改body的属性
     知道问题在哪，解决就简单了，重新覆盖下body属性即可。
   
-  * Elementui 用了合并行 表格不能固定高度（会有合并行不显示的bug）
+  * Elementui 用了合并行 表格不能固定高度（会有合并行不显示的bug） element表格获取当前第几行 scope.$index+1
 
   * inline-block元素可以将对象呈递为内联对象，但是对象的内容作为块对象呈递。但有一点需要注意的是对象仍然呈递为
     内联元素，而同一行内的内联元素默认是基于 baseline 对齐的
@@ -105,6 +105,9 @@
   * 字符串翻转
     Str = name.split('').reverse().join(''); 
   
+  * 数组排序
+    array.sort((a, b) => a.isFree - b.isFree)
+
   * 去除字符串的第一个字符
     newStr = Str.slice(1)
 
