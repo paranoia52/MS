@@ -108,6 +108,16 @@
   * 数组排序
     array.sort((a, b) => a.isFree - b.isFree)
 
+  * input只能输数字
+    <input type="text" v-model="Phone" placeholder="请输入手机号码" maxlength="11" 
+      oninput="value=value.replace(/[^\d]/g,'')">
+      
+  * input层级太多，无法输入的bug 
+    @input="onInput()"
+    onInput() {
+      this.$forceUpdate()
+    }
+
   * 去除字符串的第一个字符
     newStr = Str.slice(1)
 
