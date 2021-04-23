@@ -85,20 +85,22 @@
       -webkit-transform: perspective(1000);
 
   * 浏览器禁止复制
-    *{
-      -webkit-touch-callout:none; /*系统默认菜单被禁用*/
-      -webkit-user-select:none; /*webkit浏览器*/
-      -khtml-user-select:none; /*早期浏览器*/
-      -moz-user-select:none;/*火狐*/
-      -ms-user-select:none; /*IE10*/
-      user-select:none;
+    /*设置IOS页面长按不可复制粘贴，但是IOS上出现input、textarea不能输入，因此将使用-webkit-user-select:auto;*/
+    * {
+      -webkit-touch-callout: none; /*系统默认菜单被禁用*/
+      -webkit-user-select: none; /*webkit浏览器*/
+      -khtml-user-select: none; /*早期浏览器*/
+      -moz-user-select: none; /*火狐*/
+      -ms-user-select: none; /*IE10*/
+      user-select: none;
     }
-    以上代码也会禁止输入框的使用，可用以下代码解决：
-    input {
-      -webkit-user-select:auto; /*webkit浏览器*/
-    }
-    textarea {                                
-      -webkit-user-select:auto; /*webkit浏览器*/
+    input,
+    textarea {
+      -webkit-user-select: auto; /*webkit浏览器*/
+      user-select: auto;
+      margin: 0px;
+      padding: 0px;
+      outline: none;
     }
 
 # JS
