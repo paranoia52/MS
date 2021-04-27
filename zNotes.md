@@ -246,6 +246,39 @@
       })
     }
 
+  * 滑动切换tabs
+    <div class="list" @touchstart.prevent="touchStart" @touchmove.prevent="touchMove" @touchend="touchEnd">
+
+    touchStart(e) {
+      const touch = e.touches[0]
+      this.touch.startX = touch.pageX
+      this.touch.startY = touch.pageY
+    },
+    touchMove(e) {
+      const touch = e.touches[0]
+      //横向和纵向偏离位置
+      const deltaX = touch.pageX - this.touch.startX
+      const deltaY = touch.pageY - this.touch.startY
+      if (Math.abs(deltaY) > Math.abs(deltaX)) {
+        return
+      }
+      //记录滑动的距离占屏幕宽度的百分比，如果滑动太少则不切换
+      this.percent = deltaX / window.innerWidth
+    },
+    touchEnd() {
+      console.log(this.percent)
+      if (this.currentIndex === 0) {
+        if (this.percent < -0.1) {
+          this.tabClick(1)
+        } else {
+          return
+        }
+      } else if (this.currentIndex === 1) {
+        if (this.percent > 0.1) {
+          this.tabClick(0)
+        }
+      }
+    },
 
 # vue计算属性，watch写法，防抖函数，url在data中书写 store
   * computed: {
